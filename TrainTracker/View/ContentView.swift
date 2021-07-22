@@ -14,17 +14,12 @@ struct ContentView: View {
     
     var body: some View {
         Text("yo")
-        
-//        List {
-//            Text(api.updated)
-////            ForEach(api.data, id: \.self) { index in
-////                Text(index)
-////            }
-//        }
-        .onAppear { api.loadData()
-            print(api.updated)
+        List {
+            ForEach(api.storedData.data, id: \.id) { train in
+                Text(train.name ?? "no name")
+            }
         }
-        
+        .onAppear { api.loadData() }
     }
 }
 

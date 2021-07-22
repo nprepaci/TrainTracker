@@ -10,11 +10,11 @@ import SwiftUI
 
 
 struct GTFSObject: Codable {
-    let data: [TrainResponse]
-    let updated: String
+    var data: [TrainResponse]   // <--- var
+    let updated: String?
 }
 
-struct TrainResponse: Codable {
+struct TrainResponse: Codable, Identifiable {
     let n, s: [NS]?
     let id: String?
     let lastUpdate: String?
@@ -37,13 +37,12 @@ struct NS: Codable {
     let time: String?
 }
 
-class API: ObservableObject {
+   class API: ObservableObject {
     
-    @Published var data: TrainResponse?
-    @Published var updated = String()
+    @Published var storedData = GTFSObject(data: [], updated: nil)
     
     func loadData() {
-        guard let url = URL(string: "http://127.0.0.1:5000/by-route/A") else {
+        guard let url = URL(string: "https://api.jsonbin.io/b/60f8f8be99892a4ae9a79828") else {
             print("Your API end point is Invalid")
             return
         }
@@ -51,20 +50,84 @@ class API: ObservableObject {
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data {
                 if let response = try? JSONDecoder().decode(GTFSObject.self, from: data) {
-                    //print("\n-------> response: \(response)\n")
+                   // print("\n-------> response: \(response)\n")
                     DispatchQueue.main.async {
-                        if let data = response.data.first {
-                            self.data = data
-                            self.updated = response.updated
-                        
-                        }
-                        return
+                        self.storedData.data = response.data
                     }
+                    return
                 }
             }
         }.resume()
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+//struct GTFSObject: Codable {
+//    let data: [TrainResponse]
+//    let updated: String
+//}
+//
+//struct TrainResponse: Codable {
+//    let n, s: [NS]?
+//    let id: String?
+//    let lastUpdate: String?
+//    let location: [Double]?
+//    let name: String?
+//    let routes: [String]?
+//    let stops: [String: [Double]]?
+//
+//    enum CodingKeys: String, CodingKey {
+//        case n = "N"
+//        case s = "S"
+//        case id
+//        case lastUpdate = "last_update"
+//        case location, name, routes, stops
+//    }
+//}
+//
+//struct NS: Codable {
+//    let route: String?
+//    let time: String?
+//}
+//
+//class API: ObservableObject {
+//
+//    @Published var data: TrainResponse?
+//    @Published var updated = String()
+//
+//    func loadData() {
+//        guard let url = URL(string: "http://127.0.0.1:5000/by-route/A") else {
+//            print("Your API end point is Invalid")
+//            return
+//        }
+//        let request = URLRequest(url: url)
+//        URLSession.shared.dataTask(with: request) { data, response, error in
+//            if let data = data {
+//                if let response = try? JSONDecoder().decode(GTFSObject.self, from: data) {
+//                    //print("\n-------> response: \(response)\n")
+//                    DispatchQueue.main.async {
+//                        if let data = response.data.first {
+//                            self.data = data
+//                            self.updated = response.updated
+//
+//                        }
+//                        return
+//                    }
+//                }
+//            }
+//        }.resume()
+//    }
+//}
 
 //struct Main: Codable {
 //    let data: [Datum]
