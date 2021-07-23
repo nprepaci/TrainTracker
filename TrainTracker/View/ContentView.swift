@@ -13,16 +13,19 @@ struct ContentView: View {
     @StateObject var api = API()
     
     var body: some View {
-        Text("yo")
         List {
-            ForEach(api.storedData.data, id: \.id) { train in
-                Text(train.name ?? "no name")
+            ForEach(api.storedData.data, id: \.id) { index in
+                Text(index.name ?? "no name")
+                //can replace name with id, location, routes etc
             }
         }
         .onAppear { api.loadData() }
     }
 }
 
+
+
+///CORE DATA MODEL
 //import SwiftUI
 //import CoreData
 //

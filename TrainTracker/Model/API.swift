@@ -8,15 +8,14 @@
 import Foundation
 import SwiftUI
 
-
 struct GTFSObject: Codable {
-    var data: [TrainResponse]   // <--- var
+    var data: [TrainResponse]
     let updated: String?
 }
 
 struct TrainResponse: Codable, Identifiable {
     let n, s: [NS]?
-    let id: String?
+    let id: [String: String?]
     let lastUpdate: String?
     let location: [Double]?
     let name: String?
@@ -40,10 +39,12 @@ struct NS: Codable {
    class API: ObservableObject {
     
     @Published var storedData = GTFSObject(data: [], updated: nil)
+    //@Published var data = []()
+    @Published var id = String()
     
     func loadData() {
         guard let url = URL(string: "https://api.jsonbin.io/b/60f8f8be99892a4ae9a79828") else {
-            print("Your API end point is Invalid")
+            print("Your API end point is invalid")
             return
         }
         let request = URLRequest(url: url)
@@ -53,6 +54,7 @@ struct NS: Codable {
                    // print("\n-------> response: \(response)\n")
                     DispatchQueue.main.async {
                         self.storedData.data = response.data
+                       // self.id = storedData.data["id"]
                     }
                     return
                 }
