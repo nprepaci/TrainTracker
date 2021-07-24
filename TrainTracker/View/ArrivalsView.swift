@@ -11,18 +11,28 @@ struct ArrivalsView: View {
     
     var stationName: String
     var northRoute: [NS]
+    var southRoute: [NS]
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        ForEach(northRoute, id: \.self) { index in
-            Text(index.route ?? "")
+        HStack {
+            VStack {
+                ForEach(northRoute, id: \.self) { index in
+                    Text(index.route ?? "")
+                }
+            }
+            VStack {
+                ForEach(southRoute, id: \.self) { index in
+                    Text(index.route ?? "")
+                }
+                
+            }
         }
-            .navigationBarTitle(stationName, displayMode: .inline)
+        .navigationBarTitle(stationName, displayMode: .inline)
     }
 }
 
 struct ArrivalsView_Previews: PreviewProvider {
     static var previews: some View {
-        ArrivalsView(stationName: String.init(), northRoute: [NS].init())
+        ArrivalsView(stationName: String.init(), northRoute: [NS].init(), southRoute: [NS].init())
     }
 }

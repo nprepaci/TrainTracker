@@ -21,7 +21,7 @@ struct ContentView: View {
                 backgroundColor.edgesIgnoringSafeArea(.all)
                 List {
                     ForEach(api.storedData.data, id: \.id) { index in
-                        NavigationLink(destination: ArrivalsView(stationName: index.name ?? "", northRoute: index.n ?? [NS].init())) {
+                        NavigationLink(destination: ArrivalsView(stationName: index.name ?? "", northRoute: index.n ?? [NS].init(), southRoute: index.s ?? [NS].init())) {
                             ListRow(stationName: index.name ?? "")
                         }
                         .listRowBackground(backgroundColor)
