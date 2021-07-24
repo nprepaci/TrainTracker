@@ -31,7 +31,7 @@ struct TrainResponse: Codable, Identifiable {
     }
 }
 
-struct NS: Codable {
+struct NS: Codable, Hashable {
     var route: String? //switched to var
     let time: String?
 }
@@ -53,6 +53,7 @@ struct NS: Codable {
                    // print("\n-------> response: \(response)\n")
                     DispatchQueue.main.async {
                         self.storedData.data = response.data
+                        //self.nsRouteInfo.route = response.data?
                         //self.nsRouteInfo.route = response.data.
                     }
                     return
