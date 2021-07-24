@@ -11,26 +11,35 @@ import SwiftUI
 struct ContentView: View {
     
     @StateObject var api = API()
+    
+    var backgroundColor = Color(red: 31/255, green: 41/255, blue: 51/255, opacity: 1.0)
+    
     var body: some View {
-        List {
-            ForEach(api.storedData.data, id: \.id) { index in
-               // Text(train.name ?? "no name")
-                ZStack {
-                    ListRow(stationName: index.name ?? "")
+        NavigationView {
+            ZStack {
+                //Since nested in ZStack, this sets the background color
+                backgroundColor.edgesIgnoringSafeArea(.all)
+                List {
+                    ForEach(api.storedData.data, id: \.id) { index in
+                        NavigationLink(destination: ArrivalsView(stationName: index.name ?? "")) {
+                            ZStack {
+                                ListRow(stationName: index.name ?? "")
+                            }
+                        }
+                        .padding(.bottom, 40)
+                    }
+                    .listRowBackground(backgroundColor)
                 }
-                .listRowBackground(Color(red: 39/255, green: 36/255, blue: 29/255, opacity: 1.0))
-                .edgesIgnoringSafeArea(.top)
-                .fixedSize(horizontal: false, vertical: true)
-                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 10)
+                .listStyle(PlainListStyle())
+                .onAppear { api.loadData() }
+                .navigationBarHidden(true)
             }
         }
-        .listStyle(PlainListStyle())
-        .onAppear { api.loadData() }
+        .background(Color(red: 62/255, green: 76/255, blue: 89/255, opacity: 1.0))
     }
 }
 
 ///CORE DATA MODEL
-//import SwiftUI
 //import CoreData
 //
 //struct ContentView: View {
