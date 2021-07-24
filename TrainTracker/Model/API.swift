@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+
 struct GTFSObject: Codable {
     var data: [TrainResponse]
     let updated: String?

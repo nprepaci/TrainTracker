@@ -11,19 +11,23 @@ import SwiftUI
 struct ContentView: View {
     
     @StateObject var api = API()
-    
     var body: some View {
-        Text("yo")
         List {
-            ForEach(api.storedData.data, id: \.id) { train in
-                Text(train.name ?? "no name")
+            ForEach(api.storedData.data, id: \.id) { index in
+               // Text(train.name ?? "no name")
+                ZStack {
+                    ListRow(stationName: index.name ?? "")
+                }
+                .listRowBackground(Color(red: 39/255, green: 36/255, blue: 29/255, opacity: 1.0))
+                .edgesIgnoringSafeArea(.top)
+                .fixedSize(horizontal: false, vertical: true)
+                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 10)
             }
         }
+        .listStyle(PlainListStyle())
         .onAppear { api.loadData() }
     }
 }
-
-
 
 ///CORE DATA MODEL
 //import SwiftUI
