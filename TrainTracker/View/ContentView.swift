@@ -24,6 +24,7 @@ struct ContentView: View {
                         NavigationLink(destination: ArrivalsView(stationName: index.name ?? "")) {
                             ZStack {
                                 ListRow(stationName: index.name ?? "")
+                                //Text(index.n)
                             }
                         }
                         .padding(.bottom, 40)

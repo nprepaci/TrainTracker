@@ -32,13 +32,14 @@ struct TrainResponse: Codable, Identifiable {
 }
 
 struct NS: Codable {
-    let route: String?
+    var route: String? //switched to var
     let time: String?
 }
 
    class API: ObservableObject {
     
     @Published var storedData = GTFSObject(data: [], updated: nil)
+       @Published var nsRouteInfo = NS(route: "", time: "")
     
     func loadData() {
         guard let url = URL(string: "http://127.0.0.1:5000/by-route/A") else {
@@ -52,6 +53,7 @@ struct NS: Codable {
                    // print("\n-------> response: \(response)\n")
                     DispatchQueue.main.async {
                         self.storedData.data = response.data
+                        //self.nsRouteInfo.route = response.data.
                     }
                     return
                 }
