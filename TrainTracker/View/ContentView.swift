@@ -10,7 +10,11 @@ import SwiftUI
 
 struct ContentView: View {
     
+    //let transform = CGAffineTransform(rotationAngle: -30 * (.pi / 180))
+    
     @StateObject var api = API()
+    @State private var angle: Double = 0
+    @State private var showingPopover = false
     
     var backgroundColor = Color(red: 31/255, green: 41/255, blue: 51/255, opacity: 1.0)
     
@@ -30,12 +34,28 @@ struct ContentView: View {
                 }
                 .listStyle(PlainListStyle())
                 .onAppear { api.loadData() }
-                .navigationBarHidden(true)
-                
+                //.navigationBarHidden(true)
+                .navigationBarTitle("Station").foregroundColor(.white)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            angle += 360
+                            showingPopover = true
+                        } label: {
+                            Image(systemName: "slider.horizontal.3")
+                        }
+                        .popover(isPresented: $showingPopover) {
+                            ChangeStationView(stationName: String.init())
+                        }
+                        .rotationEffect(.degrees(angle))
+                        .animation(.easeIn, value: angle)
+                    }
+                }
             }
         }
         .background(Color(red: 62/255, green: 76/255, blue: 89/255, opacity: 1.0))
     }
+    
 }
 
 ///CORE DATA MODEL

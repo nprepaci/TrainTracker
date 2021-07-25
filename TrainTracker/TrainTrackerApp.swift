@@ -10,10 +10,14 @@ import SwiftUI
 @main
 struct TrainTrackerApp: App {
     let persistenceController = PersistenceController.shared
-
+    //this is to handle EnvironmentObject
+    @StateObject private var station = SelectedStation()
     var body: some Scene {
+        
         WindowGroup {
             ContentView()
+            //handles environment object
+                .environmentObject(station)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
             
         }

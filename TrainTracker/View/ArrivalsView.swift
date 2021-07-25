@@ -12,23 +12,49 @@ struct ArrivalsView: View {
     var stationName: String
     var northRoute: [NS]
     var southRoute: [NS]
+    var backgroundColor = Color.black
     
     var body: some View {
-        HStack {
-            VStack {
-                ForEach(northRoute, id: \.self) { index in
-                    Text(index.route ?? "")
+        ZStack {
+            backgroundColor.edgesIgnoringSafeArea(.all)
+            HStack {
+                VStack {
+                    ForEach(northRoute, id: \.self) { index in
+                        HStack {
+                            Image(systemName: "arrow.up.circle").foregroundColor(.white).font(.custom("AvenirNext-Regular", size: 20))
+                            Text(index.route ?? "").foregroundColor(.white).font(.custom("AvenirNext-Regular", size: 20))
+                                
+                            //ListRow(stationName: index.route ?? "")
+                            
+                        }
+                        .padding(.bottom, 50)
+                    }
+                    Spacer()
+                }
+                Spacer()
+                VStack {
+                    ForEach(southRoute, id: \.self) { index in
+                        HStack {
+                            Image(systemName: "arrow.down.circle").foregroundColor(.white).font(.custom("AvenirNext-Regular", size: 20))
+                            Text(index.route ?? "").foregroundColor(.white).font(.custom("AvenirNext-Regular", size: 20))
+                            
+                            //ListRow(stationName: index.route ?? "")
+                            //Spacer()
+                        }
+                        .padding(.bottom, 50)
+                    }
+                    Spacer()
+                    
                 }
             }
-            VStack {
-                ForEach(southRoute, id: \.self) { index in
-                    Text(index.route ?? "")
-                }
-                
-            }
+            .padding(.leading)
+            .padding(.trailing)
+            .navigationBarTitle(stationName, displayMode: .inline)
+            
         }
-        .navigationBarTitle(stationName, displayMode: .inline)
+        
     }
+    
 }
 
 struct ArrivalsView_Previews: PreviewProvider {
