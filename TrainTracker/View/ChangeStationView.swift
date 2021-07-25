@@ -13,12 +13,13 @@ struct ChangeStationView: View {
     
     @State var stationName: String
     @EnvironmentObject var changeStation: SelectedStation
+    var chosenStation = SelectedStation.shared
+
     
     var body: some View {
         Button("A") {
-            changeStation.selectedStation = "6"
-            //print(changeStation.selectedStation)
-           // print(station)
+            //self.changeStation.selectedStation = "6"
+            chosenStation.selectedStation = "R"
             api.loadData()
         }
     }

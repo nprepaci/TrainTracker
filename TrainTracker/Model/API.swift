@@ -38,17 +38,31 @@ struct NS: Codable, Hashable {
 
 class SelectedStation: ObservableObject {
     @Published var selectedStation: String = "A"
+    public static let shared = SelectedStation()
 }
 
 class API: ObservableObject {
     
-    @EnvironmentObject var changedStation: SelectedStation
+    var chosenStation = SelectedStation.shared
+    
+    //var selectedStation: SelectedStation
+    
+
+//    init(selectedStation: SelectedStation) {
+//            self.selectedStation = selectedStation
+//        print(selectedStation.selectedStation)
+//
+//        }
+    
+    //@EnvironmentObject var changedStation: SelectedStation
+    
+    
     @Published var storedData = GTFSObject(data: [], updated: nil)
     //@Binding var stationName: String
     var url1 = "http://127.0.0.1:5000/by-route/"
     
     func loadData() {
-        guard let url = URL(string: "http://127.0.0.1:5000/by-route/\(changedStation.selectedStation)") else {
+        guard let url = URL(string: "http://127.0.0.1:5000/by-route/\(chosenStation.selectedStation)") else {
             print("Your API end point is Invalid")
             return
         }
@@ -57,7 +71,8 @@ class API: ObservableObject {
             if let data = data {
                 if let response = try? JSONDecoder().decode(GTFSObject.self, from: data) {
                     // print("\n-------> response: \(response)\n")
-                
+                   // print(self.selectedStation.selectedStation)
+                    print(self.chosenStation.selectedStation)
                     DispatchQueue.main.async {
                         self.storedData.data = response.data
                     }
