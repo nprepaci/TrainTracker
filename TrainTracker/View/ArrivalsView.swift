@@ -65,11 +65,14 @@ struct ArrivalsView: View {
                     RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
                     RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
                     
+                    let currentTime = "2021-07-26T00:25:13-04:00"
+                    let date1 = RFC3339DateFormatter.date(from: currentTime)
                     let trainArrivalTime = arrivalTime
-                    let date1 = RFC3339DateFormatter.date(from: trainArrivalTime ?? "")
-                    let currentTime = "2021-07-26T00:20:13-04:00"
-                    let date2 = RFC3339DateFormatter.date(from: currentTime)
+                    let date2 = RFC3339DateFormatter.date(from: trainArrivalTime ?? "")
                     var timeDifference = ""
+        
+        
+        
         
                     if let d1 = date1, let d2 = date2 {
                         let (hours, minutes) = timeDiff(d1,d2)
@@ -81,6 +84,12 @@ struct ArrivalsView: View {
     }
     
     func timeDiff(_ t1: Date, _ t2: Date) -> (Int, Int) {
+        
+        let date = Date()
+        let calendar = Calendar.current
+        let minutes = calendar.component(.minute, from: date)
+        
+        
             let m1 = Calendar.current.component(.minute, from: t1)
             let h1 = Calendar.current.component(.hour, from: t1)
             
