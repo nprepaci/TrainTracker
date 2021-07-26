@@ -13,6 +13,8 @@ struct ArrivalsView: View {
     var northRoute: [NS]
     var southRoute: [NS]
     var backgroundColor = Color.black
+    var fmt = ISO8601DateFormatter()
+   // @State var timediff = ""
     
     var body: some View {
         ZStack {
@@ -26,8 +28,9 @@ struct ArrivalsView: View {
                             HStack {
                                 Image(systemName: "arrow.up.circle").foregroundColor(.white).font(.custom("AvenirNext-Regular", size: 20))
                                 Text(index.route ?? "").foregroundColor(.white).font(.custom("AvenirNext-Regular", size: 20))
-                                
-                                //ListRow(stationName: index.route ?? "")
+                                let timeDifference = calculateTimeDifference(arrivalTime: index.time ?? "")
+                                Text(timeDifference ?? "").foregroundColor(.orange)
+                                //Text(Date(), style: .time).foregroundColor(.orange)
                                 
                             }
                             .padding(.bottom, 50)
@@ -41,7 +44,6 @@ struct ArrivalsView: View {
                                 Text(index.route ?? "").foregroundColor(.white).font(.custom("AvenirNext-Regular", size: 20))
                                 
                                 //ListRow(stationName: index.route ?? "")
-                                //Spacer()
                             }
                             .padding(.bottom, 50)
                         }
@@ -52,9 +54,41 @@ struct ArrivalsView: View {
                 .navigationBarTitle(stationName, displayMode: .inline)
                 
                 //}
+            } .onAppear {
+
             }
         }
     }
+    func calculateTimeDifference(arrivalTime: String?) -> String? {
+        let RFC3339DateFormatter = DateFormatter()
+                    RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                    RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+                    RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+                    
+                    let trainArrivalTime = arrivalTime
+                    let date1 = RFC3339DateFormatter.date(from: trainArrivalTime ?? "")
+                    let currentTime = "2021-07-26T00:20:13-04:00"
+                    let date2 = RFC3339DateFormatter.date(from: currentTime)
+                    var timeDifference = ""
+        
+                    if let d1 = date1, let d2 = date2 {
+                        let (hours, minutes) = timeDiff(d1,d2)
+                        timeDifference = "\(minutes) min"
+                        //timeDifference = "[\(hours):\(minutes)]"
+                        //print("---> time diff hours: \(hours)  minutes: \(minutes) ")
+                    }
+            return timeDifference
+    }
+    
+    func timeDiff(_ t1: Date, _ t2: Date) -> (Int, Int) {
+            let m1 = Calendar.current.component(.minute, from: t1)
+            let h1 = Calendar.current.component(.hour, from: t1)
+            
+            let m2 = Calendar.current.component(.minute, from: t2)
+            let h2 = Calendar.current.component(.hour, from: t2)
+            // hours and minutes
+            return (abs(h2-h1), abs(m2-m1))
+        }
     
 }
 

@@ -52,8 +52,6 @@ class API: ObservableObject {
 //        }
     
     @Published var storedData = GTFSObject(data: [], updated: nil)
-    //@Binding var stationName: String
-    var url1 = "http://127.0.0.1:5000/by-route/"
     
     func loadData() {
         guard let url = URL(string: "http://127.0.0.1:5000/by-route/\(chosenStation.selectedStation)") else {
@@ -65,7 +63,6 @@ class API: ObservableObject {
             if let data = data {
                 if let response = try? JSONDecoder().decode(GTFSObject.self, from: data) {
                     // print("\n-------> response: \(response)\n")
-                   // print(self.selectedStation.selectedStation)
                     print(self.chosenStation.selectedStation)
                     DispatchQueue.main.async {
                         self.storedData.data = response.data

@@ -16,6 +16,7 @@ struct ContentView: View {
     @State private var angle: Double = 0
     @State private var showingPopover = false
     @EnvironmentObject var test: SelectedStation
+    @State var timediff = ""
     
     var backgroundColor = Color(red: 31/255, green: 41/255, blue: 51/255, opacity: 1.0)
     
@@ -34,7 +35,12 @@ struct ContentView: View {
                     .padding(.bottom, 40)
                 }
                 .listStyle(PlainListStyle())
-                .onAppear { api.loadData()}
+                .onAppear { api.loadData()
+                    
+                    
+                    
+                    
+                }
                 //.navigationBarHidden(true)
                 .navigationBarTitle("Station").foregroundColor(.white)
                 .toolbar {
@@ -65,6 +71,7 @@ struct ContentView: View {
         }
         .background(Color(red: 62/255, green: 76/255, blue: 89/255, opacity: 1.0))
     }
+    
     
 }
 
