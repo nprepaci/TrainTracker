@@ -17,42 +17,43 @@ struct ArrivalsView: View {
     var body: some View {
         ZStack {
             backgroundColor.edgesIgnoringSafeArea(.all)
-            HStack {
-                VStack {
-                    ForEach(northRoute, id: \.self) { index in
-                        HStack {
-                            Image(systemName: "arrow.up.circle").foregroundColor(.white).font(.custom("AvenirNext-Regular", size: 20))
-                            Text(index.route ?? "").foregroundColor(.white).font(.custom("AvenirNext-Regular", size: 20))
+            ScrollView {
+                // ZStack {
+                // backgroundColor.edgesIgnoringSafeArea(.all)
+                HStack(alignment: .top) {
+                    VStack {
+                        ForEach(northRoute, id: \.self) { index in
+                            HStack {
+                                Image(systemName: "arrow.up.circle").foregroundColor(.white).font(.custom("AvenirNext-Regular", size: 20))
+                                Text(index.route ?? "").foregroundColor(.white).font(.custom("AvenirNext-Regular", size: 20))
                                 
-                            //ListRow(stationName: index.route ?? "")
-                            
+                                //ListRow(stationName: index.route ?? "")
+                                
+                            }
+                            .padding(.bottom, 50)
                         }
-                        .padding(.bottom, 50)
                     }
                     Spacer()
-                }
-                Spacer()
-                VStack {
-                    ForEach(southRoute, id: \.self) { index in
-                        HStack {
-                            Image(systemName: "arrow.down.circle").foregroundColor(.white).font(.custom("AvenirNext-Regular", size: 20))
-                            Text(index.route ?? "").foregroundColor(.white).font(.custom("AvenirNext-Regular", size: 20))
-                            
-                            //ListRow(stationName: index.route ?? "")
-                            //Spacer()
+                    VStack {
+                        ForEach(southRoute, id: \.self) { index in
+                            HStack {
+                                Image(systemName: "arrow.down.circle").foregroundColor(.white).font(.custom("AvenirNext-Regular", size: 20))
+                                Text(index.route ?? "").foregroundColor(.white).font(.custom("AvenirNext-Regular", size: 20))
+                                
+                                //ListRow(stationName: index.route ?? "")
+                                //Spacer()
+                            }
+                            .padding(.bottom, 50)
                         }
-                        .padding(.bottom, 50)
                     }
-                    Spacer()
-                    
                 }
+                .padding(.leading)
+                .padding(.trailing)
+                .navigationBarTitle(stationName, displayMode: .inline)
+                
+                //}
             }
-            .padding(.leading)
-            .padding(.trailing)
-            .navigationBarTitle(stationName, displayMode: .inline)
-            
         }
-        
     }
     
 }

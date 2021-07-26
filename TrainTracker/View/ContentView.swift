@@ -25,7 +25,7 @@ struct ContentView: View {
                 //Since nested in ZStack, this sets the background color
                 backgroundColor.edgesIgnoringSafeArea(.all)
                 List {
-                    ForEach(api.storedData.data, id: \.id) { index in
+                    ForEach(self.api.storedData.data, id: \.id) { index in
                         NavigationLink(destination: ArrivalsView(stationName: index.name ?? "", northRoute: index.n ?? [NS].init(), southRoute: index.s ?? [NS].init())) {
                             ListRow(stationName: index.name ?? "")
                         }
@@ -39,17 +39,26 @@ struct ContentView: View {
                 .navigationBarTitle("Station").foregroundColor(.white)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            angle += 360
-                            showingPopover = true
-                        } label: {
-                            Image(systemName: "slider.horizontal.3")
+                        HStack {
+                            NavigationLink(destination: ChangeStationView(stationName: String.init())) {
+                                Image(systemName: "slider.horizontal.3")
+                            }.simultaneousGesture(TapGesture().onEnded{
+                                angle += 360
+                                print("yo")
+                            }).rotationEffect(.degrees(angle))
+                                .animation(.easeIn, value: angle)
+                            //                        Button {
+                            //                            angle += 360
+                            //                            showingPopover = true
+                            //                        } label: {
+                            //                            Image(systemName: "slider.horizontal.3")
+                            //                        }
+                            //                        .popover(isPresented: $showingPopover) {
+                            //                            ChangeStationView(stationName: String.init())
+                            //                        }
+                            //                        .rotationEffect(.degrees(angle))
+                            //                        .animation(.easeIn, value: angle)
                         }
-                        .popover(isPresented: $showingPopover) {
-                            ChangeStationView(stationName: String.init())
-                        }
-                        .rotationEffect(.degrees(angle))
-                        .animation(.easeIn, value: angle)
                     }
                 }
             }

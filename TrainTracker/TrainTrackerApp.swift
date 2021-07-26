@@ -12,7 +12,7 @@ struct TrainTrackerApp: App {
     let persistenceController = PersistenceController.shared
     //this is to handle EnvironmentObject
     @StateObject private var station = SelectedStation()
-    
+
     var body: some Scene {
         WindowGroup {
             ContentView()

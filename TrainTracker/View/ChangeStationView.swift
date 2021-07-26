@@ -9,18 +9,25 @@ import SwiftUI
 
 struct ChangeStationView: View {
     
+    @Environment(\.presentationMode) var presentationMode
     var api = API()
-    
     @State var stationName: String
-    @EnvironmentObject var changeStation: SelectedStation
+    //@EnvironmentObject var changeStation: SelectedStation
     var chosenStation = SelectedStation.shared
-
+    var contentView = ContentView()
+    
     
     var body: some View {
-        Button("A") {
-            //self.changeStation.selectedStation = "6"
-            chosenStation.selectedStation = "R"
-            api.loadData()
+        VStack {
+            Button("A") {
+                //self.changeStation.selectedStation = "6"
+                chosenStation.selectedStation = "R"
+                api.loadData()
+            }
+            Button("Dismiss") {
+                presentationMode.wrappedValue.dismiss()
+                
+            }
         }
     }
 }

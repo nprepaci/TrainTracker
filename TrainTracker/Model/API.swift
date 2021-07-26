@@ -44,18 +44,12 @@ class SelectedStation: ObservableObject {
 class API: ObservableObject {
     
     var chosenStation = SelectedStation.shared
-    
-    //var selectedStation: SelectedStation
-    
 
 //    init(selectedStation: SelectedStation) {
 //            self.selectedStation = selectedStation
 //        print(selectedStation.selectedStation)
 //
 //        }
-    
-    //@EnvironmentObject var changedStation: SelectedStation
-    
     
     @Published var storedData = GTFSObject(data: [], updated: nil)
     //@Binding var stationName: String
