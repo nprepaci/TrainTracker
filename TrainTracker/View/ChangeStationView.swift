@@ -19,11 +19,85 @@ struct ChangeStationView: View {
     
     var body: some View {
         VStack {
-            Button("A") {
-                //self.changeStation.selectedStation = "6"
-                chosenStation.selectedStation = "R"
-                api.loadData()
+            HStack{
+                Button("1") {
+                    chosenStation.selectedStation = "1"
+                }
+                Button("2") {
+                    chosenStation.selectedStation = "2"
+                }
+                Button("3") {
+                    chosenStation.selectedStation = "3"
+                }
             }
+            HStack{
+                Button("4") {
+                    chosenStation.selectedStation = "4"
+                }
+                Button("5") {
+                    chosenStation.selectedStation = "5"
+                }
+                Button("6") {
+                    chosenStation.selectedStation = "6"
+                }
+                Button("7") {
+                    chosenStation.selectedStation = "7"
+                }
+            }
+            HStack{
+                Button("A") {
+                    chosenStation.selectedStation = "A"
+                }
+                Button("C") {
+                    chosenStation.selectedStation = "C"
+                }
+                Button("E") {
+                    chosenStation.selectedStation = "E"
+                }
+            }
+            HStack{
+                Button("N") {
+                    chosenStation.selectedStation = "N"
+                }
+                Button("Q") {
+                    chosenStation.selectedStation = "Q"
+                }
+                Button("R") {
+                    chosenStation.selectedStation = "R"
+                }
+                Button("W") {
+                    chosenStation.selectedStation = "W"
+                }
+            }
+            HStack{
+                Button("B") {
+                    chosenStation.selectedStation = "B"
+                }
+                Button("D") {
+                    chosenStation.selectedStation = "D"
+                }
+                Button("F") {
+                    chosenStation.selectedStation = "F"
+                }
+                Button("M") {
+                    chosenStation.selectedStation = "M"
+                }
+            }
+            HStack{
+                Button("L") {
+                    chosenStation.selectedStation = "L"
+                }
+                Button("G") {
+                    chosenStation.selectedStation = "G"
+                }
+                Button("J") {
+                    chosenStation.selectedStation = "J"
+                }
+                Button("Z") {
+                    chosenStation.selectedStation = "Z"
+                }
+            }
+            
             Button("Dismiss") {
                 presentationMode.wrappedValue.dismiss()
                 

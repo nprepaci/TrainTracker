@@ -78,7 +78,12 @@ struct ArrivalsView: View {
         let minutes = calendar.component(.minute, from: date)
         let m2 = Calendar.current.component(.minute, from: t2)
         
-        return (abs(m2-minutes))
+        //handles the issue if train times do not fall within the same hour
+        if m2 > minutes {
+            return (abs(m2-minutes))
+        } else {
+            return (abs(minutes-m2))
+        }
     }
 }
 
