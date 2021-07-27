@@ -16,6 +16,7 @@ struct ChangeStationView: View {
     var contentView = ContentView()
     var backgroundColor = Color(red: 31/255, green: 41/255, blue: 51/255, opacity: 1.0)
     var shadowColor = Color(red: 66/255, green: 66/255, blue: 66/255, opacity: 1.0)
+    @State private var angle: Double = 0
     
     var buttonArray = ["1", "2", "3", "4", "5", "6", "7", "A", "C", "E", "N", "Q", "R", "W", "B", "D", "F", "M", "L", "G", "J", "Z"]
     let columns = [
@@ -43,7 +44,8 @@ struct ChangeStationView: View {
                             presentationMode.wrappedValue.dismiss()
                         } label: {
                             Image("\(index)").resizable().frame(width: 60, height: 60).shadow(color: shadowColor, radius: 10, x: 0, y: 0)
-                        }
+                        }.rotationEffect(.degrees(angle))
+                            .animation(.easeIn, value: angle)
                     }
                 }
                 Spacer()
@@ -51,7 +53,7 @@ struct ChangeStationView: View {
         }
         .navigationBarTitle(Text(""), displayMode: .inline)
         .onAppear {
-            
+            angle += 360
         }
     }
 }

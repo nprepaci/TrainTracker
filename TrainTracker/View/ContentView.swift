@@ -62,7 +62,6 @@ struct ContentView: View {
                                 Image(systemName: "slider.horizontal.3").foregroundColor(navigationButtonColor)
                             }.simultaneousGesture(TapGesture().onEnded{
                                 angle += 360
-                                print("yo")
                             }).rotationEffect(.degrees(angle))
                                 .animation(.easeIn, value: angle)
                             //                        Button {
