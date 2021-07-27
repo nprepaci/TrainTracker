@@ -64,17 +64,6 @@ struct ContentView: View {
                                 angle += 360
                             }).rotationEffect(.degrees(angle))
                                 .animation(.easeIn, value: angle)
-                            //                        Button {
-                            //                            angle += 360
-                            //                            showingPopover = true
-                            //                        } label: {
-                            //                            Image(systemName: "slider.horizontal.3")
-                            //                        }
-                            //                        .popover(isPresented: $showingPopover) {
-                            //                            ChangeStationView(stationName: String.init())
-                            //                        }
-                            //                        .rotationEffect(.degrees(angle))
-                            //                        .animation(.easeIn, value: angle)
                         }
                     }
                 }
@@ -196,3 +185,21 @@ struct ContentView: View {
 //        .background(Color(red: 62/255, green: 76/255, blue: 89/255, opacity: 1.0))
 //    }
 //}
+
+
+
+
+
+
+//Old popover
+//                        Button {
+//                            angle += 360
+//                            showingPopover = true
+//                        } label: {
+//                            Image(systemName: "slider.horizontal.3")
+//                        }
+//                        .popover(isPresented: $showingPopover) {
+//                            ChangeStationView(stationName: String.init())
+//                        }
+//                        .rotationEffect(.degrees(angle))
+//                        .animation(.easeIn, value: angle)
