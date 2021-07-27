@@ -10,8 +10,6 @@ import SwiftUI
 
 struct ContentView: View {
     
-    //let transform = CGAffineTransform(rotationAngle: -30 * (.pi / 180))
-    
     init() {
         //UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
