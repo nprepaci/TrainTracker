@@ -21,11 +21,14 @@ struct ChangeStationView: View {
     ]
     
     var body: some View {
-        LazyVGrid(columns: columns, spacing: 20) {
-            ForEach(buttonArray, id: \.self) { index in
-                Button("\(index)") {
-                    chosenStation.selectedStation = index
-                    presentationMode.wrappedValue.dismiss()
+        ZStack {
+            Color.black.edgesIgnoringSafeArea(.all)
+            LazyVGrid(columns: columns, spacing: 20) {
+                ForEach(buttonArray, id: \.self) { index in
+                    Button("\(index)") {
+                        chosenStation.selectedStation = index
+                        presentationMode.wrappedValue.dismiss()
+                    }
                 }
             }
         }
