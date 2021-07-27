@@ -46,7 +46,7 @@ struct ContentView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         HStack {
-                            NavigationLink(destination: ChangeStationView(stationName: String.init())) {
+                            NavigationLink(destination: ChangeStationView()) {
                                 Image(systemName: "slider.horizontal.3")
                             }.simultaneousGesture(TapGesture().onEnded{
                                 angle += 360
