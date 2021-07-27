@@ -12,14 +12,12 @@ struct ArrivalsView: View {
     var stationName: String
     var northRoute: [NS]
     var southRoute: [NS]
-    var backgroundColor = Color.black
+    var backgroundColor = Color(red: 29/255, green: 32/255, blue: 37/255, opacity: 1.0)
     
     var body: some View {
         ZStack {
             backgroundColor.edgesIgnoringSafeArea(.all)
             ScrollView {
-                // ZStack {
-                // backgroundColor.edgesIgnoringSafeArea(.all)
                 HStack(alignment: .top) {
                     VStack {
                         ForEach(northRoute, id: \.self) { index in
@@ -51,6 +49,17 @@ struct ArrivalsView: View {
                 .padding(.leading)
                 .padding(.trailing)
                 .navigationBarTitle(stationName, displayMode: .inline)
+            }
+            
+            VStack {
+                Spacer()
+                Divider().foregroundColor(.orange)
+                HStack {
+                    Image(systemName: "arrow.up.circle").foregroundColor(.white)
+                    Text("Uptown").fontWeight(.thin)
+                    Image(systemName: "arrow.down.circle").foregroundColor(.white)
+                    Text("Downtown").fontWeight(.thin)
+                }
             }
         }
     }
