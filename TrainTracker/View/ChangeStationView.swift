@@ -25,10 +25,13 @@ struct ChangeStationView: View {
             Color.black.edgesIgnoringSafeArea(.all)
             LazyVGrid(columns: columns, spacing: 20) {
                 ForEach(buttonArray, id: \.self) { index in
-                    Button("\(index)") {
+                    Button {
                         chosenStation.selectedStation = index
                         presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Image("\(index)").resizable().frame(width: 40, height: 40)
                     }
+
                 }
             }
         }
