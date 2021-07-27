@@ -14,26 +14,44 @@ struct ChangeStationView: View {
     var api = API()
     var chosenStation = SelectedStation.shared
     var contentView = ContentView()
+    var backgroundColor = Color(red: 31/255, green: 41/255, blue: 51/255, opacity: 1.0)
+    var shadowColor = Color(red: 66/255, green: 66/255, blue: 66/255, opacity: 1.0)
     
     var buttonArray = ["1", "2", "3", "4", "5", "6", "7", "A", "C", "E", "N", "Q", "R", "W", "B", "D", "F", "M", "L", "G", "J", "Z"]
     let columns = [
-        GridItem(.adaptive(minimum: 80))
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible())
     ]
     
     var body: some View {
         ZStack {
-            Color.black.edgesIgnoringSafeArea(.all)
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(buttonArray, id: \.self) { index in
-                    Button {
-                        chosenStation.selectedStation = index
-                        presentationMode.wrappedValue.dismiss()
-                    } label: {
-                        Image("\(index)").resizable().frame(width: 40, height: 40)
+            backgroundColor.edgesIgnoringSafeArea(.all)
+            VStack {
+                HStack(alignment: .top) {
+                    Text("Change Station").foregroundColor(.white).font(.largeTitle).fontWeight(.thin)
+                    Spacer()
+                }.padding(.leading)
+                //Spacer()
+                //backgroundColor.edgesIgnoringSafeArea(.all)
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(buttonArray, id: \.self) { index in
+                        Button {
+                            chosenStation.selectedStation = index
+                            presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            Image("\(index)").resizable().frame(width: 60, height: 60).shadow(color: shadowColor, radius: 10, x: 0, y: 0)
+                        }
                     }
-
                 }
+                Spacer()
             }
+        }
+        .navigationBarTitle(Text(""), displayMode: .inline)
+        .onAppear {
+            
         }
     }
 }

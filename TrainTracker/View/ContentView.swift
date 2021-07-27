@@ -12,13 +12,28 @@ struct ContentView: View {
     
     //let transform = CGAffineTransform(rotationAngle: -30 * (.pi / 180))
     
+    init() {
+        //UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
+        //UINavigationBar.appearance().backgroundColor = .orange
+        //let coloredAppearance = UINavigationBarAppearance()
+        //coloredAppearance.backgroundColor = UIColor(backgroundColor)
+        
+        //UINavigationBar.appearance().standardAppearance = coloredAppearance
+            //UINavigationBar.appearance().compactAppearance = coloredAppearance
+            //UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
+   }
+    
     @StateObject var api = API()
     @State private var angle: Double = 0
     @State private var showingPopover = false
     @EnvironmentObject var test: SelectedStation
     @State var timediff = ""
     
-    var backgroundColor = Color(red: 31/255, green: 41/255, blue: 51/255, opacity: 1.0)
+    //var backgroundColor = Color(red: 31/255, green: 41/255, blue: 51/255, opacity: 1.0)
+    var backgroundColor = Color(red: 29/255, green: 32/255, blue: 37/255, opacity: 1.0)
+    var navigationButtonColor = Color(red: 183/255, green: 239/255, blue: 168/255, opacity: 1.0)
     
     var body: some View {
         NavigationView {
@@ -30,24 +45,21 @@ struct ContentView: View {
                         NavigationLink(destination: ArrivalsView(stationName: index.name ?? "", northRoute: index.n ?? [NS].init(), southRoute: index.s ?? [NS].init())) {
                             ListRow(stationName: index.name ?? "")
                         }
+                        .buttonStyle(PlainButtonStyle())
                         .listRowBackground(backgroundColor)
                     }
                     .padding(.bottom, 40)
                 }
+                //.listRowSeparator(.hidden)
                 .listStyle(PlainListStyle())
-                .onAppear { api.loadData()
-                    
-                    
-                    
-                    
-                }
+                .onAppear { api.loadData()}
                 //.navigationBarHidden(true)
-                .navigationBarTitle("Station").foregroundColor(.white)
+                .navigationBarTitle("Station").foregroundColor(.white).colorScheme(.dark)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         HStack {
                             NavigationLink(destination: ChangeStationView()) {
-                                Image(systemName: "slider.horizontal.3")
+                                Image(systemName: "slider.horizontal.3").foregroundColor(navigationButtonColor)
                             }.simultaneousGesture(TapGesture().onEnded{
                                 angle += 360
                                 print("yo")
