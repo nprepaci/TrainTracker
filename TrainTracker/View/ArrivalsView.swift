@@ -62,6 +62,9 @@ struct ArrivalsView: View {
                 }
             }
         }
+        .onAppear {
+            
+        }
     }
     func calculateTimeDifference(arrivalTime: String?) -> String? {
         let RFC3339DateFormatter = DateFormatter()

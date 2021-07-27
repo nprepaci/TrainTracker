@@ -31,7 +31,7 @@ struct ContentView: View {
     
     //var backgroundColor = Color(red: 31/255, green: 41/255, blue: 51/255, opacity: 1.0)
     var backgroundColor = Color(red: 29/255, green: 32/255, blue: 37/255, opacity: 1.0)
-    var navigationButtonColor = Color(red: 183/255, green: 239/255, blue: 168/255, opacity: 1.0)
+    var navigationButtonColor = Color(red: 29/255, green: 222/255, blue: 203/255, opacity: 1.0)
     
     var body: some View {
         NavigationView {

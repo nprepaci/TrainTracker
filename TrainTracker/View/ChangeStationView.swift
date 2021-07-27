@@ -31,10 +31,10 @@ struct ChangeStationView: View {
             ScrollView {
                 VStack {
                     HStack(alignment: .top) {
-                        Text("Change Station").foregroundColor(.white).font(.largeTitle).fontWeight(.thin)
+                        Text("Change Station").foregroundColor(.white).font(.system(size: 40)).fontWeight(.thin)
                         Spacer()
                     }.padding(.leading)
-                    LazyVGrid(columns: columns, spacing: 60) {
+                    LazyVGrid(columns: columns, spacing: 50) {
                         ForEach(buttonArray, id: \.self) { index in
                             Button {
                                 chosenStation.selectedStation = index
@@ -48,6 +48,7 @@ struct ChangeStationView: View {
                     Spacer()
                 }
             }
+            .padding(.top)
             .navigationBarTitle(Text(""), displayMode: .inline)
             .onAppear {
                 angle += 360
