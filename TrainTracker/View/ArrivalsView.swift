@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+
+extension AnyTransition {
+    static var moveAndFade: AnyTransition {
+        AnyTransition.slide
+    }
+}
+
 struct ArrivalsView: View {
     
     var stationName: String
@@ -15,6 +22,7 @@ struct ArrivalsView: View {
     var backgroundColor = Color(red: 29/255, green: 32/255, blue: 37/255, opacity: 1.0)
     var timeColor = Color(red: 29/255, green: 222/255, blue: 203/255, opacity: 1.0)
     var textColor = Color(red: 185/255, green: 239/255, blue: 165/255, opacity: 1.0)
+    @State private var animateItems = false
     
     var body: some View {
         ZStack {
@@ -28,6 +36,7 @@ struct ArrivalsView: View {
                                 Text(index.route ?? "").foregroundColor(textColor).font(.system(size: 25))//.fontWeight(.thin)
                                 let timeDifference = calculateTimeDifference(arrivalTime: index.time ?? "")
                                 Text(timeDifference ?? "").foregroundColor(timeColor).font(.system(size: 25)).fontWeight(.thin)
+                                    
                             }
                             .padding(.bottom, 50)
                         }
@@ -41,6 +50,7 @@ struct ArrivalsView: View {
                                 let timeDifference = calculateTimeDifference(arrivalTime: index.time ?? "")
                                 Text(timeDifference ?? "").foregroundColor(timeColor).font(.system(size: 25)).fontWeight(.thin)
                                 //ListRow(stationName: index.route ?? "")
+                                    .animation(.easeInOut)
                             }
                             .padding(.bottom, 50)
                         }
@@ -50,6 +60,7 @@ struct ArrivalsView: View {
                 .padding(.trailing)
                 .navigationBarTitle(stationName, displayMode: .inline)
             }
+            .animation(.easeInOut(duration: 0.5)).transition(.moveAndFade)
             .padding(.top)
             VStack {
                 Spacer()
