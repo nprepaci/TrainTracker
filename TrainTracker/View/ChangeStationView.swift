@@ -38,7 +38,6 @@ struct ChangeStationView: View {
                         GeometryReader { geometry in
                             Color.gray.frame(width: geometry.size.width/1.65, height:CGFloat(1))
                         }.padding(.bottom, 500)//////WHY DOESNT THIS DO ANYTHING
-                        
                     }
                     LazyVGrid(columns: columns, spacing: 50) {
                         ForEach(buttonArray, id: \.self) { index in
@@ -48,16 +47,17 @@ struct ChangeStationView: View {
                             } label: {
                                 Image("\(index)").resizable().frame(width: 60, height: 60).shadow(color: shadowColor, radius: 3, x: 0, y: 0)
                             }.rotationEffect(.degrees(angle))
-                                .animation(.easeIn, value: angle)
+                                .animation(.easeInOut, value: angle)
                         }
                     }
                     Spacer()
                 }
             }
+            .animation(.spring().speed(0.75))
             .padding(.top)
             .navigationBarTitle(Text(""), displayMode: .inline)
             .onAppear {
-                angle += 360
+                angle += 720
             }
         }
     }

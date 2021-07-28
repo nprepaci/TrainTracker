@@ -28,6 +28,7 @@ struct ContentView: View {
     @State private var showingPopover = false
     @EnvironmentObject var test: SelectedStation
     @State var timediff = ""
+    //let impactMed = UIImpactFeedbackGenerator(style: .medium)
     
     //var backgroundColor = Color(red: 31/255, green: 41/255, blue: 51/255, opacity: 1.0)
     var backgroundColor = Color(red: 29/255, green: 32/255, blue: 37/255, opacity: 1.0)
@@ -43,8 +44,13 @@ struct ContentView: View {
                         NavigationLink(destination: ArrivalsView(stationName: index.name ?? "", northRoute: index.n ?? [NS].init(), southRoute: index.s ?? [NS].init())) {
                             ListRow(stationName: index.name ?? "")
                         }
+                        //.onTapGesture {
+                         //let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
+                                    //impactHeavy.impactOccurred()
+                        //}
                         .buttonStyle(PlainButtonStyle())
                         .listRowBackground(backgroundColor)
+                        
                     }
                     .padding(.bottom, 40)
                 }

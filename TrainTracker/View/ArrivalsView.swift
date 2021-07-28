@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-
-extension AnyTransition {
-    static var moveAndFade: AnyTransition {
-        AnyTransition.slide
-    }
-}
-
 struct ArrivalsView: View {
     
     var stationName: String
@@ -36,7 +29,6 @@ struct ArrivalsView: View {
                                 Text(index.route ?? "").foregroundColor(textColor).font(.system(size: 25))//.fontWeight(.thin)
                                 let timeDifference = calculateTimeDifference(arrivalTime: index.time ?? "")
                                 Text(timeDifference ?? "").foregroundColor(timeColor).font(.system(size: 25)).fontWeight(.thin)
-                                    
                             }
                             .padding(.bottom, 50)
                         }
@@ -49,8 +41,6 @@ struct ArrivalsView: View {
                                 Text(index.route ?? "").foregroundColor(textColor).font(.system(size: 25))//.fontWeight(.thin)
                                 let timeDifference = calculateTimeDifference(arrivalTime: index.time ?? "")
                                 Text(timeDifference ?? "").foregroundColor(timeColor).font(.system(size: 25)).fontWeight(.thin)
-                                //ListRow(stationName: index.route ?? "")
-                                    .animation(.easeInOut)
                             }
                             .padding(.bottom, 50)
                         }
@@ -60,7 +50,7 @@ struct ArrivalsView: View {
                 .padding(.trailing)
                 .navigationBarTitle(stationName, displayMode: .inline)
             }
-            .animation(.easeInOut(duration: 0.5)).transition(.moveAndFade)
+            .animation(.spring().speed(0.75))
             .padding(.top)
             VStack {
                 Spacer()
@@ -77,6 +67,8 @@ struct ArrivalsView: View {
             
         }
     }
+
+    
     func calculateTimeDifference(arrivalTime: String?) -> String? {
         let RFC3339DateFormatter = DateFormatter()
         RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
