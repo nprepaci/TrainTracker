@@ -52,22 +52,30 @@ struct ArrivalsView: View {
             }
             .animation(.spring().speed(0.75))
             .padding(.top)
-            VStack {
-                Spacer()
-                Divider().foregroundColor(.orange)
-                HStack {
-                    Image(systemName: "arrow.up.circle").foregroundColor(.white)
-                    Text("Uptown").fontWeight(.thin)
-                    Image(systemName: "arrow.down.circle").foregroundColor(.white)
-                    Text("Downtown").fontWeight(.thin)
+            Spacer()
+            //this section handles the divider, legend, and fill behind the legend
+            GeometryReader { geometry in
+                ZStack {
+                    VStack {
+                        Spacer()
+                        Rectangle().fill(backgroundColor).frame(width: geometry.size.width, height: 60).edgesIgnoringSafeArea(.bottom)
+                    }.edgesIgnoringSafeArea(.bottom)
+                    VStack {
+                        Spacer()
+                        Divider().foregroundColor(.white)
+                        HStack {
+                            Image(systemName: "arrow.up.circle").foregroundColor(.white)
+                            Text("Uptown").fontWeight(.thin)
+                            Image(systemName: "arrow.down.circle").foregroundColor(.white)
+                            Text("Downtown").fontWeight(.thin)
+                        }.zIndex(20)
+                    }
+                    Spacer()
                 }
             }
-        }
-        .onAppear {
             
         }
     }
-
     
     func calculateTimeDifference(arrivalTime: String?) -> String? {
         let RFC3339DateFormatter = DateFormatter()
