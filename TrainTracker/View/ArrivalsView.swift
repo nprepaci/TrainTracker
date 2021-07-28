@@ -29,7 +29,7 @@ struct ArrivalsView: View {
                         ForEach(northRoute, id: \.self) { index in
                             HStack {
                                 Image(systemName: "arrow.up.circle").foregroundColor(.white).font(.system(size: 25))
-                                Text(index.route ?? "").foregroundColor(textColor).font(.system(size: 25))//.fontWeight(.thin)
+                                Text(index.route ?? "").foregroundColor(textColor).font(.system(size: 25))
                                 let timeDifference = calculateTimeDifference(arrivalTime: index.time ?? "")
                                 Text(timeDifference ?? "").foregroundColor(timeColor).font(.system(size: 25)).fontWeight(.thin)
                             }
@@ -41,7 +41,7 @@ struct ArrivalsView: View {
                         ForEach(southRoute, id: \.self) { index in
                             HStack {
                                 Image(systemName: "arrow.down.circle").foregroundColor(.white).font(.system(size: 25))
-                                Text(index.route ?? "").foregroundColor(textColor).font(.system(size: 25))//.fontWeight(.thin)
+                                Text(index.route ?? "").foregroundColor(textColor).font(.system(size: 25))
                                 let timeDifference = calculateTimeDifference(arrivalTime: index.time ?? "")
                                 Text(timeDifference ?? "").foregroundColor(timeColor).font(.system(size: 25)).fontWeight(.thin)
                             }
@@ -59,16 +59,7 @@ struct ArrivalsView: View {
             }
             //API called every minute, updates what is displayed to user
             .onReceive(timer) { time in
-                if (timerRefreshCount == 0) {
-                    timerRefreshCount = 15
-                } else if (timerRefreshCount == 15) {
-                    timerRefreshCount = 30
-                } else if (timerRefreshCount == 30) {
-                    timerRefreshCount = 45
-                } else if (timerRefreshCount == 45) {
-                    timerRefreshCount = 0
-                    api.loadData()
-                }
+                updateTimeSinceRefresh()
             }
             .animation(.spring().speed(0.75))
             .padding(.top)
@@ -97,8 +88,17 @@ struct ArrivalsView: View {
         }
     }
     
-    func forEachCall() {
-        
+    func updateTimeSinceRefresh() {
+        if (timerRefreshCount == 0) {
+            timerRefreshCount = 15
+        } else if (timerRefreshCount == 15) {
+            timerRefreshCount = 30
+        } else if (timerRefreshCount == 30) {
+            timerRefreshCount = 45
+        } else if (timerRefreshCount == 45) {
+            timerRefreshCount = 0
+            api.loadData()
+        }
     }
     
     func calculateTimeDifference(arrivalTime: String?) -> String? {

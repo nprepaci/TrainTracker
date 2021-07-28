@@ -37,7 +37,7 @@ struct ChangeStationView: View {
                         }.padding(.leading)
                         GeometryReader { geometry in
                             Color.gray.frame(width: geometry.size.width/1.65, height:CGFloat(1))
-                        }.padding(.bottom, 500)//////WHY DOESNT THIS DO ANYTHING
+                        }
                     }
                     LazyVGrid(columns: columns, spacing: 50) {
                         ForEach(buttonArray, id: \.self) { index in

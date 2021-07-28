@@ -23,6 +23,8 @@ struct ContentView: View {
             //UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
    }
     
+   // @StateObject var changeColor = ChangeColor()
+    var changeColor = ChangeColor.shared
     @StateObject var api = API()
     @State private var angle: Double = 0
     @State private var showingPopover = false
@@ -36,10 +38,13 @@ struct ContentView: View {
     var navigationButtonColor = Color(red: 29/255, green: 222/255, blue: 203/255, opacity: 1.0)
     
     var body: some View {
+        
+        
         NavigationView {
             ZStack {
                 //Since nested in ZStack, this sets the background color
-                backgroundColor.edgesIgnoringSafeArea(.all)
+               // backgroundColor.edgesIgnoringSafeArea(.all)
+                Color(red: changeColor.red/255, green: changeColor.green/255, blue: changeColor.blue/255, opacity: 1.0)
                 List {
                     ForEach(self.api.storedData.data, id: \.id) { index in
                         NavigationLink(destination: ArrivalsView(stationName: index.name ?? "", northRoute: index.n ?? [NS].init(), southRoute: index.s ?? [NS].init())) {
@@ -72,13 +77,19 @@ struct ContentView: View {
                                 .animation(.easeIn, value: angle)
                         }
                     }
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        NavigationLink(destination: SettingsView()) {
+                            Image(systemName: "gearshape").foregroundColor(navigationButtonColor)
+                        }.simultaneousGesture(TapGesture().onEnded{
+                            angle += 360
+                        }).rotationEffect(.degrees(angle))
+                            .animation(.easeIn, value: angle)
+                    }
                 }
             }
         }
         .background(Color(red: 62/255, green: 76/255, blue: 89/255, opacity: 1.0))
     }
-    
-    
 }
 
 ///CORE DATA MODEL
