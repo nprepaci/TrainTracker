@@ -9,13 +9,16 @@ import SwiftUI
 
 struct ArrivalsView: View {
     
+    @StateObject var api = API()
     var stationName: String
     var northRoute: [NS]
     var southRoute: [NS]
     var backgroundColor = Color(red: 29/255, green: 32/255, blue: 37/255, opacity: 1.0)
     var timeColor = Color(red: 29/255, green: 222/255, blue: 203/255, opacity: 1.0)
     var textColor = Color(red: 185/255, green: 239/255, blue: 165/255, opacity: 1.0)
-    @State private var animateItems = false
+    let timer = Timer.publish(every: 15, on: .main, in: .common).autoconnect()
+    @State var timerRefreshCount = 0
+    
     
     var body: some View {
         ZStack {
@@ -49,6 +52,23 @@ struct ArrivalsView: View {
                 .padding(.leading)
                 .padding(.trailing)
                 .navigationBarTitle(stationName, displayMode: .inline)
+                VStack {
+                    Spacer()
+                    Text("Updated \(timerRefreshCount) seconds ago").foregroundColor(.white).fontWeight(.thin).opacity(0.5)
+                }
+            }
+            //API called every minute, updates what is displayed to user
+            .onReceive(timer) { time in
+                if (timerRefreshCount == 0) {
+                    timerRefreshCount = 15
+                } else if (timerRefreshCount == 15) {
+                    timerRefreshCount = 30
+                } else if (timerRefreshCount == 30) {
+                    timerRefreshCount = 45
+                } else if (timerRefreshCount == 45) {
+                    timerRefreshCount = 0
+                    api.loadData()
+                }
             }
             .animation(.spring().speed(0.75))
             .padding(.top)
@@ -75,6 +95,10 @@ struct ArrivalsView: View {
             }
             
         }
+    }
+    
+    func forEachCall() {
+        
     }
     
     func calculateTimeDifference(arrivalTime: String?) -> String? {

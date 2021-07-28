@@ -28,6 +28,7 @@ struct ContentView: View {
     @State private var showingPopover = false
     @EnvironmentObject var test: SelectedStation
     @State var timediff = ""
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     //let impactMed = UIImpactFeedbackGenerator(style: .medium)
     
     //var backgroundColor = Color(red: 31/255, green: 41/255, blue: 51/255, opacity: 1.0)
@@ -57,6 +58,7 @@ struct ContentView: View {
                 //.listRowSeparator(.hidden)
                 .listStyle(PlainListStyle())
                 .onAppear { api.loadData()}
+                
                 //.navigationBarHidden(true)
                 .navigationBarTitle("Station").foregroundColor(.white).colorScheme(.dark)
                 .toolbar {

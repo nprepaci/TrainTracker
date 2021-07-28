@@ -32,7 +32,7 @@ struct TrainResponse: Codable, Identifiable {
 }
 
 struct NS: Codable, Hashable {
-    var route: String? //switched to var
+    var route: String?
     let time: String?
 }
 
@@ -44,13 +44,6 @@ class SelectedStation: ObservableObject {
 class API: ObservableObject {
     
     var chosenStation = SelectedStation.shared
-
-//    init(selectedStation: SelectedStation) {
-//            self.selectedStation = selectedStation
-//        print(selectedStation.selectedStation)
-//
-//        }
-    
     @Published var storedData = GTFSObject(data: [], updated: nil)
     
     func loadData() {
@@ -63,7 +56,6 @@ class API: ObservableObject {
             if let data = data {
                 if let response = try? JSONDecoder().decode(GTFSObject.self, from: data) {
                     // print("\n-------> response: \(response)\n")
-                    print(self.chosenStation.selectedStation)
                     DispatchQueue.main.async {
                         self.storedData.data = response.data
                     }
