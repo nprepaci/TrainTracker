@@ -29,8 +29,10 @@ struct ArrivalsView: View {
                     VStack(alignment: .leading) {
                         ForEach(northRoute, id: \.self) { index in
                             HStack {
-                                Image(systemName: "arrow.up.circle").foregroundColor(.white).font(.system(size: 25))
-                                Text(index.route ?? "").foregroundColor(Color(red: changeColor.generalTextRed/255, green: changeColor.generalTextGreen/255, blue: changeColor.generalTextBlue/255, opacity: 1.0)).font(.system(size: 25))
+                                Image(systemName: "arrow.up.circle").foregroundColor(.white).font(.system(size: 27))
+                                
+                                Image(index.route ?? "").resizable().frame(width: 30, height: 30)
+                                
                                 let timeDifference = calculateTimeDifference(arrivalTime: index.time ?? "")
                                 Text(timeDifference ?? "").foregroundColor(Color(red: changeColor.navButtonsRed/255, green: changeColor.navButtonsGreen/255, blue: changeColor.navButtonsBlue/255, opacity: 1.0)).font(.system(size: 25)).fontWeight(.thin)
                             }
@@ -41,8 +43,10 @@ struct ArrivalsView: View {
                     VStack(alignment: .leading) {
                         ForEach(southRoute, id: \.self) { index in
                             HStack {
-                                Image(systemName: "arrow.down.circle").foregroundColor(.white).font(.system(size: 25))
-                                Text(index.route ?? "").foregroundColor(Color(red: changeColor.generalTextRed/255, green: changeColor.generalTextGreen/255, blue: changeColor.generalTextBlue/255, opacity: 1.0)).font(.system(size: 25))
+                                Image(systemName: "arrow.down.circle").foregroundColor(.white).font(.system(size: 27))
+                                
+                                Image(index.route ?? "").resizable().frame(width: 30, height: 30)
+                                
                                 let timeDifference = calculateTimeDifference(arrivalTime: index.time ?? "")
                                 Text(timeDifference ?? "").foregroundColor(Color(red: changeColor.navButtonsRed/255, green: changeColor.navButtonsGreen/255, blue: changeColor.navButtonsBlue/255, opacity: 1.0)).font(.system(size: 25)).fontWeight(.thin)
                             }
