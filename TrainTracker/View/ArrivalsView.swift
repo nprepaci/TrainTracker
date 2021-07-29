@@ -23,7 +23,7 @@ struct ArrivalsView: View {
     
     var body: some View {
         ZStack {
-            backgroundColor.edgesIgnoringSafeArea(.all)
+            Color(red: changeColor.backgroundRed/255, green: changeColor.backgroundGreen/255, blue: changeColor.backgroundBlue/255, opacity: 1.0).edgesIgnoringSafeArea(.all)
             ScrollView {
                 HStack(alignment: .top) {
                     VStack(alignment: .leading) {
@@ -70,7 +70,7 @@ struct ArrivalsView: View {
                 ZStack {
                     VStack {
                         Spacer()
-                        Rectangle().fill(backgroundColor).frame(width: geometry.size.width, height: 60).edgesIgnoringSafeArea(.bottom)
+                        Rectangle().fill( Color(red: changeColor.backgroundRed/255, green: changeColor.backgroundGreen/255, blue: changeColor.backgroundBlue/255, opacity: 1.0)).frame(width: geometry.size.width, height: 60).edgesIgnoringSafeArea(.bottom)
                     }.edgesIgnoringSafeArea(.bottom)
                     VStack {
                         Spacer()

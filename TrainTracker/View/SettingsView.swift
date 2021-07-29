@@ -54,10 +54,34 @@ struct SettingsView: View {
             colorScheme.rowBackgroundBlue = 90
         }
         
-        Button("Purple") {
-            colorScheme.backgroundRed = 41
-            colorScheme.backgroundGreen = 41
-            colorScheme.backgroundBlue = 41
+        Button("Midnight Plum") {
+            colorScheme.backgroundRed = 21
+            colorScheme.backgroundGreen = 21
+            colorScheme.backgroundBlue = 21
+            
+            colorScheme.navButtonsRed = 180
+            colorScheme.navButtonsGreen = 165
+            colorScheme.navButtonsBlue = 165
+            
+            colorScheme.generalTextRed = 170
+            colorScheme.generalTextGreen = 150
+            colorScheme.generalTextBlue = 83
+//            colorScheme.generalTextRed = 60
+//            colorScheme.generalTextGreen = 65
+//            colorScheme.generalTextBlue = 92
+            
+            colorScheme.rowBackgroundRed = 51
+            colorScheme.rowBackgroundGreen = 41
+            colorScheme.rowBackgroundBlue = 64
+            
+//            colorScheme.rowBackgroundRed = 31
+//            colorScheme.rowBackgroundGreen = 26
+//            colorScheme.rowBackgroundBlue = 36
+        }
+        Button("True Dark") {
+            colorScheme.backgroundRed = 0
+            colorScheme.backgroundGreen = 0
+            colorScheme.backgroundBlue = 0
             
             colorScheme.navButtonsRed = 29
             colorScheme.navButtonsGreen = 222
@@ -67,9 +91,9 @@ struct SettingsView: View {
             colorScheme.generalTextGreen = 239
             colorScheme.generalTextBlue = 165
             
-            colorScheme.rowBackgroundRed = 51
-            colorScheme.rowBackgroundGreen = 41
-            colorScheme.rowBackgroundBlue = 64
+            colorScheme.rowBackgroundRed = 31
+            colorScheme.rowBackgroundGreen = 26
+            colorScheme.rowBackgroundBlue = 36
         }
     }
 }
