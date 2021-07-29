@@ -8,19 +8,11 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
     
     init() {
-        //UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        
-        //UINavigationBar.appearance().backgroundColor = .orange
-        //let coloredAppearance = UINavigationBarAppearance()
-        //coloredAppearance.backgroundColor = UIColor(backgroundColor)
-        
-        //UINavigationBar.appearance().standardAppearance = coloredAppearance
-            //UINavigationBar.appearance().compactAppearance = coloredAppearance
-            //UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
    }
     
    // @StateObject var changeColor = ChangeColor()
@@ -44,7 +36,7 @@ struct ContentView: View {
             ZStack {
                 //Since nested in ZStack, this sets the background color
                // backgroundColor.edgesIgnoringSafeArea(.all)
-                Color(red: changeColor.red/255, green: changeColor.green/255, blue: changeColor.blue/255, opacity: 1.0)
+                Color(red: changeColor.red/255, green: changeColor.green/255, blue: changeColor.blue/255, opacity: 1.0).edgesIgnoringSafeArea(.all)
                 List {
                     ForEach(self.api.storedData.data, id: \.id) { index in
                         NavigationLink(destination: ArrivalsView(stationName: index.name ?? "", northRoute: index.n ?? [NS].init(), southRoute: index.s ?? [NS].init())) {
@@ -62,7 +54,9 @@ struct ContentView: View {
                 }
                 //.listRowSeparator(.hidden)
                 .listStyle(PlainListStyle())
-                .onAppear { api.loadData()}
+                .onAppear { api.loadData()
+             
+                }
                 
                 //.navigationBarHidden(true)
                 .navigationBarTitle("Station").foregroundColor(.white).colorScheme(.dark)

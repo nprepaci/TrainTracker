@@ -15,6 +15,8 @@ class ChangeColor: ObservableObject {
     public static let shared = ChangeColor()
 }
 
+
+
 struct SettingsView: View {
     
     //@StateObject var colorScheme = ChangeColor()
@@ -22,7 +24,7 @@ struct SettingsView: View {
     
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        Button("change colors") {
+        Button("Blue/Grey") {
             colorScheme.red = 29
             colorScheme.green = 32
             colorScheme.blue = 37

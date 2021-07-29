@@ -17,6 +17,7 @@ struct ChangeStationView: View {
     var shadowColor = Color(red: 182/255, green: 239/255, blue: 162/255, opacity: 1.0)
     @State private var angle: Double = 0
     
+    
     var buttonArray = ["1", "2", "3", "4", "5", "6", "7", "A", "C", "E", "N", "Q", "R", "W", "B", "D", "F", "M", "L", "G", "J", "Z"]
     let columns = [
         GridItem(.flexible()),
