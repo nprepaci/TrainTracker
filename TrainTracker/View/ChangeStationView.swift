@@ -12,6 +12,7 @@ struct ChangeStationView: View {
     @Environment(\.presentationMode) var presentationMode
     var api = API()
     var chosenStation = SelectedStation.shared
+    var changeColor = ChangeColor.shared
     var contentView = ContentView()
     var backgroundColor = Color(red: 29/255, green: 32/255, blue: 37/255, opacity: 1.0)
     var shadowColor = Color(red: 182/255, green: 239/255, blue: 162/255, opacity: 1.0)
@@ -28,7 +29,8 @@ struct ChangeStationView: View {
     
     var body: some View {
         ZStack {
-            backgroundColor.edgesIgnoringSafeArea(.all)
+           // backgroundColor.edgesIgnoringSafeArea(.all)
+            Color(red: changeColor.backgroundRed/255, green: changeColor.backgroundGreen/255, blue: changeColor.backgroundBlue/255, opacity: 1.0).edgesIgnoringSafeArea(.all)
             ScrollView {
                 VStack {
                     VStack {

@@ -15,14 +15,12 @@ struct ContentView: View {
         UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
    }
     
-   // @StateObject var changeColor = ChangeColor()
     var changeColor = ChangeColor.shared
     @StateObject var api = API()
     @State private var angle: Double = 0
     @State private var showingPopover = false
     @EnvironmentObject var test: SelectedStation
     @State var timediff = ""
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     //let impactMed = UIImpactFeedbackGenerator(style: .medium)
     
     //var backgroundColor = Color(red: 31/255, green: 41/255, blue: 51/255, opacity: 1.0)
@@ -36,7 +34,7 @@ struct ContentView: View {
             ZStack {
                 //Since nested in ZStack, this sets the background color
                // backgroundColor.edgesIgnoringSafeArea(.all)
-                Color(red: changeColor.red/255, green: changeColor.green/255, blue: changeColor.blue/255, opacity: 1.0).edgesIgnoringSafeArea(.all)
+                Color(red: changeColor.backgroundRed/255, green: changeColor.backgroundGreen/255, blue: changeColor.backgroundBlue/255, opacity: 1.0).edgesIgnoringSafeArea(.all)
                 List {
                     ForEach(self.api.storedData.data, id: \.id) { index in
                         NavigationLink(destination: ArrivalsView(stationName: index.name ?? "", northRoute: index.n ?? [NS].init(), southRoute: index.s ?? [NS].init())) {
@@ -47,7 +45,7 @@ struct ContentView: View {
                                     //impactHeavy.impactOccurred()
                         //}
                         .buttonStyle(PlainButtonStyle())
-                        .listRowBackground(backgroundColor)
+                        .listRowBackground(Color(red: changeColor.backgroundRed/255, green: changeColor.backgroundGreen/255, blue: changeColor.backgroundBlue/255, opacity: 1.0))
                         
                     }
                     .padding(.bottom, 40)
@@ -64,7 +62,7 @@ struct ContentView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         HStack {
                             NavigationLink(destination: ChangeStationView()) {
-                                Image(systemName: "slider.horizontal.3").foregroundColor(navigationButtonColor)
+                                Image(systemName: "slider.horizontal.3").foregroundColor(Color(red: changeColor.navButtonsRed/255, green: changeColor.navButtonsGreen/255, blue: changeColor.navButtonsBlue/255, opacity: 1.0))
                             }.simultaneousGesture(TapGesture().onEnded{
                                 angle += 360
                             }).rotationEffect(.degrees(angle))
@@ -73,7 +71,7 @@ struct ContentView: View {
                     }
                     ToolbarItem(placement: .navigationBarLeading) {
                         NavigationLink(destination: SettingsView()) {
-                            Image(systemName: "gearshape").foregroundColor(navigationButtonColor)
+                            Image(systemName: "gearshape").foregroundColor(Color(red: changeColor.navButtonsRed/255, green: changeColor.navButtonsGreen/255, blue: changeColor.navButtonsBlue/255, opacity: 1.0))
                         }.simultaneousGesture(TapGesture().onEnded{
                             angle += 360
                         }).rotationEffect(.degrees(angle))
@@ -82,7 +80,8 @@ struct ContentView: View {
                 }
             }
         }
-        .background(Color(red: 62/255, green: 76/255, blue: 89/255, opacity: 1.0))
+       // .background(Color(red: 62/255, green: 76/255, blue: 89/255, opacity: 1.0)).edgesIgnoringSafeArea(.all)
+        //.background(Color(red: changeColor.backgroundRed/255, green: changeColor.backgroundGreen/255, blue: changeColor.backgroundBlue/255, opacity: 1.0)).edgesIgnoringSafeArea(.all)
     }
 }
 
