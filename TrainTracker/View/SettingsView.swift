@@ -26,11 +26,14 @@ class ChangeColor: ObservableObject {
     @Published var rowBackgroundBlue: Double = 90
     
     public static let shared = ChangeColor()
+    
 }
 
 
 
 struct SettingsView: View {
+    
+    
     
     //@StateObject var colorScheme = ChangeColor()
     var colorScheme = ChangeColor.shared
@@ -52,6 +55,8 @@ struct SettingsView: View {
             colorScheme.rowBackgroundRed = 46
             colorScheme.rowBackgroundGreen = 68
             colorScheme.rowBackgroundBlue = 90
+            
+            saveColorChoice()
         }
         
         Button("Midnight Plum") {
@@ -77,6 +82,8 @@ struct SettingsView: View {
 //            colorScheme.rowBackgroundRed = 31
 //            colorScheme.rowBackgroundGreen = 26
 //            colorScheme.rowBackgroundBlue = 36
+            
+            saveColorChoice()
         }
         Button("True Dark") {
             colorScheme.backgroundRed = 0
@@ -94,7 +101,27 @@ struct SettingsView: View {
             colorScheme.rowBackgroundRed = 31
             colorScheme.rowBackgroundGreen = 26
             colorScheme.rowBackgroundBlue = 36
+            
+            saveColorChoice()
         }
+    }
+    
+    func saveColorChoice() {
+        UserDefaults.standard.set(colorScheme.backgroundRed, forKey: "BackgroundRed")
+        UserDefaults.standard.set(colorScheme.backgroundGreen, forKey: "BackgroundGreen")
+        UserDefaults.standard.set(colorScheme.backgroundBlue, forKey: "BackgroundBlue")
+        
+        UserDefaults.standard.set(colorScheme.navButtonsRed, forKey: "NavButtonRed")
+        UserDefaults.standard.set(colorScheme.navButtonsGreen, forKey: "NavButtonGreen")
+        UserDefaults.standard.set(colorScheme.navButtonsBlue, forKey: "NavButtonBlue")
+        
+        UserDefaults.standard.set(colorScheme.generalTextRed, forKey: "TextRed")
+        UserDefaults.standard.set(colorScheme.generalTextGreen, forKey: "TextGreen")
+        UserDefaults.standard.set(colorScheme.generalTextBlue, forKey: "TextBlue")
+        
+        UserDefaults.standard.set(colorScheme.rowBackgroundRed, forKey: "ListRowRed")
+        UserDefaults.standard.set(colorScheme.rowBackgroundGreen, forKey: "ListRowGreen")
+        UserDefaults.standard.set(colorScheme.rowBackgroundBlue, forKey: "ListRowBlue")
     }
 }
 

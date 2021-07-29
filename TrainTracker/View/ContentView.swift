@@ -13,6 +13,22 @@ struct ContentView: View {
     
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        self.changeColor.backgroundRed = UserDefaults.standard.double(forKey: "BackgroundRed")
+        self.changeColor.backgroundGreen = UserDefaults.standard.double(forKey: "BackgroundGreen")
+        self.changeColor.backgroundBlue = UserDefaults.standard.double(forKey: "BackgroundBlue")
+        
+        self.changeColor.navButtonsRed = UserDefaults.standard.double(forKey: "NavButtonRed")
+        self.changeColor.navButtonsGreen = UserDefaults.standard.double(forKey: "NavButtonGreen")
+        self.changeColor.navButtonsBlue = UserDefaults.standard.double(forKey: "NavButtonBlue")
+        
+        self.changeColor.generalTextRed = UserDefaults.standard.double(forKey: "TextRed")
+        self.changeColor.generalTextGreen = UserDefaults.standard.double(forKey: "TextGreen")
+        self.changeColor.generalTextBlue = UserDefaults.standard.double(forKey: "TextBlue")
+        
+        self.changeColor.rowBackgroundRed = UserDefaults.standard.double(forKey: "ListRowRed")
+        self.changeColor.rowBackgroundGreen = UserDefaults.standard.double(forKey: "ListRowGreen")
+        self.changeColor.rowBackgroundBlue = UserDefaults.standard.double(forKey: "ListRowBlue")
+
    }
     
     var changeColor = ChangeColor.shared
