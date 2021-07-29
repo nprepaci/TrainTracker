@@ -25,6 +25,10 @@ struct ContentView: View {
         self.changeColor.generalTextGreen = UserDefaults.standard.double(forKey: "TextGreen")
         self.changeColor.generalTextBlue = UserDefaults.standard.double(forKey: "TextBlue")
         
+        self.changeColor.arrowRed = UserDefaults.standard.double(forKey: "ArrowRed")
+        self.changeColor.arrowGreen = UserDefaults.standard.double(forKey: "ArrowGreen")
+        self.changeColor.arrowBlue = UserDefaults.standard.double(forKey: "ArrowBlue")
+        
         self.changeColor.rowBackgroundRed = UserDefaults.standard.double(forKey: "ListRowRed")
         self.changeColor.rowBackgroundGreen = UserDefaults.standard.double(forKey: "ListRowGreen")
         self.changeColor.rowBackgroundBlue = UserDefaults.standard.double(forKey: "ListRowBlue")

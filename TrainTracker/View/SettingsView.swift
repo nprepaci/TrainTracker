@@ -21,6 +21,10 @@ class ChangeColor: ObservableObject {
     @Published var generalTextGreen: Double = 222
     @Published var generalTextBlue: Double = 203
     
+    @Published var arrowRed: Double = 255
+    @Published var arrowGreen: Double = 255
+    @Published var arrowBlue: Double = 255
+    
     @Published var rowBackgroundRed: Double = 46
     @Published var rowBackgroundGreen: Double = 68
     @Published var rowBackgroundBlue: Double = 90
@@ -48,9 +52,13 @@ struct SettingsView: View {
             colorScheme.navButtonsGreen = 222
             colorScheme.navButtonsBlue = 203
             
-            colorScheme.generalTextRed = 185
-            colorScheme.generalTextGreen = 239
-            colorScheme.generalTextBlue = 165
+            colorScheme.generalTextRed = 255
+            colorScheme.generalTextGreen = 255
+            colorScheme.generalTextBlue = 255
+            
+            colorScheme.arrowRed = 255
+            colorScheme.arrowGreen = 255
+            colorScheme.arrowBlue = 255
             
             colorScheme.rowBackgroundRed = 46
             colorScheme.rowBackgroundGreen = 68
@@ -68,12 +76,16 @@ struct SettingsView: View {
             colorScheme.navButtonsGreen = 165
             colorScheme.navButtonsBlue = 165
             
-            colorScheme.generalTextRed = 170
-            colorScheme.generalTextGreen = 150
-            colorScheme.generalTextBlue = 83
+            colorScheme.generalTextRed = 255
+            colorScheme.generalTextGreen = 255
+            colorScheme.generalTextBlue = 255
 //            colorScheme.generalTextRed = 60
 //            colorScheme.generalTextGreen = 65
 //            colorScheme.generalTextBlue = 92
+            
+            colorScheme.arrowRed = 255
+            colorScheme.arrowGreen = 255
+            colorScheme.arrowBlue = 255
             
             colorScheme.rowBackgroundRed = 51
             colorScheme.rowBackgroundGreen = 41
@@ -86,22 +98,31 @@ struct SettingsView: View {
             saveColorChoice()
         }
         Button("True Dark") {
-            colorScheme.backgroundRed = 0
-            colorScheme.backgroundGreen = 0
-            colorScheme.backgroundBlue = 0
+            colorScheme.backgroundRed = 21
+            colorScheme.backgroundGreen = 21
+            colorScheme.backgroundBlue = 21
             
-            colorScheme.navButtonsRed = 29
-            colorScheme.navButtonsGreen = 222
-            colorScheme.navButtonsBlue = 203
+            colorScheme.navButtonsRed = 216
+            colorScheme.navButtonsGreen = 146
+            colorScheme.navButtonsBlue = 22
             
-            colorScheme.generalTextRed = 185
-            colorScheme.generalTextGreen = 239
-            colorScheme.generalTextBlue = 165
+            colorScheme.generalTextRed = 255
+            colorScheme.generalTextGreen = 255
+            colorScheme.generalTextBlue = 255
             
-            colorScheme.rowBackgroundRed = 31
-            colorScheme.rowBackgroundGreen = 26
-            colorScheme.rowBackgroundBlue = 36
+            colorScheme.arrowRed = 216
+            colorScheme.arrowGreen = 146
+            colorScheme.arrowBlue = 22
             
+            colorScheme.rowBackgroundRed = 35
+            colorScheme.rowBackgroundGreen = 35
+            colorScheme.rowBackgroundBlue = 35
+  
+            ////THIS IS A NICE GREY
+//            colorScheme.rowBackgroundRed = 43
+//            colorScheme.rowBackgroundGreen = 43
+//            colorScheme.rowBackgroundBlue = 43
+//
             saveColorChoice()
         }
     }
@@ -118,6 +139,10 @@ struct SettingsView: View {
         UserDefaults.standard.set(colorScheme.generalTextRed, forKey: "TextRed")
         UserDefaults.standard.set(colorScheme.generalTextGreen, forKey: "TextGreen")
         UserDefaults.standard.set(colorScheme.generalTextBlue, forKey: "TextBlue")
+        
+        UserDefaults.standard.set(colorScheme.arrowRed, forKey: "ArrowRed")
+        UserDefaults.standard.set(colorScheme.arrowGreen, forKey: "ArrowGreen")
+        UserDefaults.standard.set(colorScheme.arrowBlue, forKey: "ArrowBlue")
         
         UserDefaults.standard.set(colorScheme.rowBackgroundRed, forKey: "ListRowRed")
         UserDefaults.standard.set(colorScheme.rowBackgroundGreen, forKey: "ListRowGreen")
