@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-
 struct ContentView: View {
     
     init() {
@@ -32,7 +31,10 @@ struct ContentView: View {
         self.changeColor.rowBackgroundRed = UserDefaults.standard.double(forKey: "ListRowRed")
         self.changeColor.rowBackgroundGreen = UserDefaults.standard.double(forKey: "ListRowGreen")
         self.changeColor.rowBackgroundBlue = UserDefaults.standard.double(forKey: "ListRowBlue")
-
+        
+        self.changeColor.blueGreyChecked = UserDefaults.standard.string(forKey: "blueGreyChecked") ?? ""
+        self.changeColor.midnightPlumChecked = UserDefaults.standard.string(forKey: "midnightPlumChecked") ?? ""
+        self.changeColor.trueDarkChecked = UserDefaults.standard.string(forKey: "trueDarkChecked") ?? ""
    }
     
     var changeColor = ChangeColor.shared
@@ -43,17 +45,9 @@ struct ContentView: View {
     @State var timediff = ""
     //let impactMed = UIImpactFeedbackGenerator(style: .medium)
     
-    //var backgroundColor = Color(red: 31/255, green: 41/255, blue: 51/255, opacity: 1.0)
-    var backgroundColor = Color(red: 29/255, green: 32/255, blue: 37/255, opacity: 1.0)
-    var navigationButtonColor = Color(red: 29/255, green: 222/255, blue: 203/255, opacity: 1.0)
-    
     var body: some View {
-        
-        
         NavigationView {
             ZStack {
-                //Since nested in ZStack, this sets the background color
-               // backgroundColor.edgesIgnoringSafeArea(.all)
                 Color(red: changeColor.backgroundRed/255, green: changeColor.backgroundGreen/255, blue: changeColor.backgroundBlue/255, opacity: 1.0).edgesIgnoringSafeArea(.all)
                 List {
                     ForEach(self.api.storedData.data, id: \.id) { index in
@@ -72,11 +66,7 @@ struct ContentView: View {
                 }
                 //.listRowSeparator(.hidden)
                 .listStyle(PlainListStyle())
-                .onAppear { api.loadData()
-             
-                }
-                
-                //.navigationBarHidden(true)
+                .onAppear { api.loadData()}
                 .navigationBarTitle("Station").foregroundColor(.white).colorScheme(.dark)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -100,8 +90,6 @@ struct ContentView: View {
                 }
             }
         }
-       // .background(Color(red: 62/255, green: 76/255, blue: 89/255, opacity: 1.0)).edgesIgnoringSafeArea(.all)
-        //.background(Color(red: changeColor.backgroundRed/255, green: changeColor.backgroundGreen/255, blue: changeColor.backgroundBlue/255, opacity: 1.0)).edgesIgnoringSafeArea(.all)
     }
 }
 

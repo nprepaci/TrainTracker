@@ -10,16 +10,13 @@ import SwiftUI
 struct ArrivalsView: View {
     
     @StateObject var api = API()
+    @State var timerRefreshCount = 0
     var stationName: String
     var northRoute: [NS]
     var southRoute: [NS]
     var backgroundColor = Color(red: 29/255, green: 32/255, blue: 37/255, opacity: 1.0)
-    //var timeColor = Color(red: 29/255, green: 222/255, blue: 203/255, opacity: 1.0)
-    //var textColor = Color(red: 185/255, green: 239/255, blue: 165/255, opacity: 1.0)
     let timer = Timer.publish(every: 15, on: .main, in: .common).autoconnect()
-    @State var timerRefreshCount = 0
     var changeColor = ChangeColor.shared
-    
     
     var body: some View {
         ZStack {
