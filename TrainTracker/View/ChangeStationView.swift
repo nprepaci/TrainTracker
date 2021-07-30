@@ -35,7 +35,7 @@ struct ChangeStationView: View {
                 VStack {
                     VStack {
                         HStack(alignment: .top) {
-                            Text("Change Station").foregroundColor(.white).font(.system(size: 40)).fontWeight(.thin)
+                            Text("Change Line").foregroundColor(.white).font(.system(size: 40)).fontWeight(.thin)
                             Spacer()
                         }.padding(.leading)
                         GeometryReader { geometry in

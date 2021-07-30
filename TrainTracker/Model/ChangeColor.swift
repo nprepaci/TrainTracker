@@ -32,6 +32,7 @@ class ChangeColor: ObservableObject {
     @Published var blueGreyChecked: String = "checkmark"
     @Published var midnightPlumChecked: String = ""
     @Published var trueDarkChecked: String = ""
+    @Published var vibrantChecked: String = ""
     
     public static let shared = ChangeColor()
     
@@ -65,5 +66,6 @@ class SaveData {
         UserDefaults.standard.set(colorScheme.blueGreyChecked, forKey: "blueGreyChecked")
         UserDefaults.standard.set(colorScheme.midnightPlumChecked, forKey: "midnightPlumChecked")
         UserDefaults.standard.set(colorScheme.trueDarkChecked, forKey: "trueDarkChecked")
+        UserDefaults.standard.set(colorScheme.vibrantChecked, forKey: "vibrantChecked")
     }
 }

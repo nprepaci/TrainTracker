@@ -35,9 +35,10 @@ struct ContentView: View {
         self.changeColor.blueGreyChecked = UserDefaults.standard.string(forKey: "blueGreyChecked") ?? ""
         self.changeColor.midnightPlumChecked = UserDefaults.standard.string(forKey: "midnightPlumChecked") ?? ""
         self.changeColor.trueDarkChecked = UserDefaults.standard.string(forKey: "trueDarkChecked") ?? ""
+        self.changeColor.vibrantChecked = UserDefaults.standard.string(forKey: "vibrantChecked") ?? ""
    }
     
-    var changeColor = ChangeColor.shared
+    @State var changeColor = ChangeColor.shared
     @StateObject var api = API()
     @State private var angle: Double = 0
     @State private var showingPopover = false

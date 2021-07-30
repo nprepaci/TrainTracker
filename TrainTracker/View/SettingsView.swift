@@ -14,6 +14,7 @@ struct SettingsView: View {
     @State private var checkmark1 = ""
     @State private var checkmark2 = ""
     @State private var checkmark3 = ""
+    @State private var checkmark4 = ""
     
     var body: some View {
         ZStack {
@@ -21,7 +22,7 @@ struct SettingsView: View {
             List {
                 Section(header: Text("Display Settings")) {
                     HStack {
-                        Button("Blue/Grey") {
+                        Button("Cool Morning Haze") {
                             colorScheme.backgroundRed = 29
                             colorScheme.backgroundGreen = 32
                             colorScheme.backgroundBlue = 37
@@ -45,9 +46,11 @@ struct SettingsView: View {
                             colorScheme.blueGreyChecked = "checkmark"
                             colorScheme.midnightPlumChecked = ""
                             colorScheme.trueDarkChecked = ""
+                            colorScheme.vibrantChecked = ""
                             checkmark1 = "checkmark"
                             checkmark2 = ""
                             checkmark3 = ""
+                            checkmark4 = ""
                             saveData.saveColorChoice()
                         }
                         Spacer()
@@ -86,9 +89,11 @@ struct SettingsView: View {
                             colorScheme.blueGreyChecked = ""
                             colorScheme.midnightPlumChecked = "checkmark"
                             colorScheme.trueDarkChecked = ""
+                            colorScheme.vibrantChecked = ""
                             checkmark1 = ""
                             checkmark2 = "checkmark"
                             checkmark3 = ""
+                            checkmark4 = ""
                             
                             saveData.saveColorChoice()
                         }
@@ -126,14 +131,59 @@ struct SettingsView: View {
                             colorScheme.blueGreyChecked = ""
                             colorScheme.midnightPlumChecked = ""
                             colorScheme.trueDarkChecked = "checkmark"
+                            colorScheme.vibrantChecked = ""
                             checkmark1 = ""
                             checkmark2 = ""
                             checkmark3 = "checkmark"
+                            checkmark4 = ""
                             
                             saveData.saveColorChoice()
                         }
                         Spacer()
                         Image(systemName: checkmark3)
+                    }
+                    
+                    HStack {
+                        Button("Vibrant") {
+                            colorScheme.backgroundRed = 240
+                            colorScheme.backgroundGreen = 84
+                            colorScheme.backgroundBlue = 84
+                            
+                            colorScheme.navButtonsRed = 216
+                            colorScheme.navButtonsGreen = 146
+                            colorScheme.navButtonsBlue = 22
+                            
+                            colorScheme.generalTextRed = 255
+                            colorScheme.generalTextGreen = 255
+                            colorScheme.generalTextBlue = 255
+                            
+                            colorScheme.arrowRed = 216
+                            colorScheme.arrowGreen = 146
+                            colorScheme.arrowBlue = 22
+                            
+                            colorScheme.rowBackgroundRed = 35
+                            colorScheme.rowBackgroundGreen = 35
+                            colorScheme.rowBackgroundBlue = 35
+                            
+                            ////THIS IS A NICE GREY
+                            //            colorScheme.rowBackgroundRed = 43
+                            //            colorScheme.rowBackgroundGreen = 43
+                            //            colorScheme.rowBackgroundBlue = 43
+                            //
+                            
+                            colorScheme.blueGreyChecked = ""
+                            colorScheme.midnightPlumChecked = ""
+                            colorScheme.trueDarkChecked = ""
+                            colorScheme.vibrantChecked = "checkmark"
+                            checkmark1 = ""
+                            checkmark2 = ""
+                            checkmark3 = ""
+                            checkmark4 = "checkmark"
+                            
+                            saveData.saveColorChoice()
+                        }
+                        Spacer()
+                        Image(systemName: checkmark4)
                     }
                 }
                 .listRowBackground(Color(red: colorScheme.backgroundRed/255, green: colorScheme.backgroundGreen/255, blue: colorScheme.backgroundBlue/255, opacity: 1.0))
@@ -144,6 +194,7 @@ struct SettingsView: View {
                 checkmark1 = colorScheme.blueGreyChecked
                 checkmark2 = colorScheme.midnightPlumChecked
                 checkmark3 = colorScheme.trueDarkChecked
+                checkmark4 = colorScheme.vibrantChecked
             }
         }
     }
