@@ -20,6 +20,7 @@
 		7C777F8B26AA7FE90085A5AD /* ListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C777F8A26AA7FE90085A5AD /* ListRow.swift */; };
 		7CB308B726B116D2000854CD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB308B626B116D2000854CD /* SettingsView.swift */; };
 		7CE1909426ABA00700E6E1DB /* ArrivalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE1909326ABA00700E6E1DB /* ArrivalsView.swift */; };
+		7CEAFFD026B39ADF0041CE98 /* ChangeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEAFFCF26B39ADF0041CE98 /* ChangeColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		7C777F8A26AA7FE90085A5AD /* ListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRow.swift; sourceTree = "<group>"; };
 		7CB308B626B116D2000854CD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7CE1909326ABA00700E6E1DB /* ArrivalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivalsView.swift; sourceTree = "<group>"; };
+		7CEAFFCF26B39ADF0041CE98 /* ChangeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 		7C34204A26A7B7360037E4B0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7CEAFFCF26B39ADF0041CE98 /* ChangeColor.swift */,
 				7C34204826A7B7300037E4B0 /* API.swift */,
 				7C34202426A7B54B0037E4B0 /* Persistence.swift */,
 				7C34202626A7B54B0037E4B0 /* TrainTracker.xcdatamodeld */,
@@ -304,6 +307,7 @@
 				7CE1909426ABA00700E6E1DB /* ArrivalsView.swift in Sources */,
 				7CB308B726B116D2000854CD /* SettingsView.swift in Sources */,
 				7C777F8B26AA7FE90085A5AD /* ListRow.swift in Sources */,
+				7CEAFFD026B39ADF0041CE98 /* ChangeColor.swift in Sources */,
 				7C34201C26A7B5460037E4B0 /* TrainTrackerApp.swift in Sources */,
 				7C247CF826AD0E0400E3BE71 /* ChangeStationView.swift in Sources */,
 				7C34202826A7B54B0037E4B0 /* TrainTracker.xcdatamodeld in Sources */,

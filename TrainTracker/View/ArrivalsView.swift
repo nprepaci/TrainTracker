@@ -10,16 +10,13 @@ import SwiftUI
 struct ArrivalsView: View {
     
     @StateObject var api = API()
+    @State var timerRefreshCount = 0
     var stationName: String
     var northRoute: [NS]
     var southRoute: [NS]
     var backgroundColor = Color(red: 29/255, green: 32/255, blue: 37/255, opacity: 1.0)
-    //var timeColor = Color(red: 29/255, green: 222/255, blue: 203/255, opacity: 1.0)
-    //var textColor = Color(red: 185/255, green: 239/255, blue: 165/255, opacity: 1.0)
     let timer = Timer.publish(every: 15, on: .main, in: .common).autoconnect()
-    @State var timerRefreshCount = 0
     var changeColor = ChangeColor.shared
-    
     
     var body: some View {
         ZStack {
@@ -29,12 +26,12 @@ struct ArrivalsView: View {
                     VStack(alignment: .leading) {
                         ForEach(northRoute, id: \.self) { index in
                             HStack {
-                                Image(systemName: "arrow.up.circle").foregroundColor(.white).font(.system(size: 27))
+                                Image(systemName: "arrow.up.circle").foregroundColor(Color(red: changeColor.arrowRed/255, green: changeColor.arrowGreen/255, blue: changeColor.arrowBlue/255, opacity: 1.0)).font(.system(size: 27))
                                 
                                 Image(index.route ?? "").resizable().frame(width: 30, height: 30)
                                 
                                 let timeDifference = calculateTimeDifference(arrivalTime: index.time ?? "")
-                                Text(timeDifference ?? "").foregroundColor(Color(red: changeColor.navButtonsRed/255, green: changeColor.navButtonsGreen/255, blue: changeColor.navButtonsBlue/255, opacity: 1.0)).font(.system(size: 25)).fontWeight(.thin)
+                                Text(timeDifference ?? "").foregroundColor(Color(red: changeColor.generalTextRed/255, green: changeColor.generalTextGreen/255, blue: changeColor.generalTextBlue/255, opacity: 1.0)).font(.system(size: 25)).fontWeight(.thin)
                             }
                             .padding(.bottom, 50)
                         }
@@ -43,12 +40,12 @@ struct ArrivalsView: View {
                     VStack(alignment: .leading) {
                         ForEach(southRoute, id: \.self) { index in
                             HStack {
-                                Image(systemName: "arrow.down.circle").foregroundColor(.white).font(.system(size: 27))
+                                Image(systemName: "arrow.down.circle").foregroundColor(Color(red: changeColor.arrowRed/255, green: changeColor.arrowGreen/255, blue: changeColor.arrowBlue/255, opacity: 1.0)).font(.system(size: 27))
                                 
                                 Image(index.route ?? "").resizable().frame(width: 30, height: 30)
                                 
                                 let timeDifference = calculateTimeDifference(arrivalTime: index.time ?? "")
-                                Text(timeDifference ?? "").foregroundColor(Color(red: changeColor.navButtonsRed/255, green: changeColor.navButtonsGreen/255, blue: changeColor.navButtonsBlue/255, opacity: 1.0)).font(.system(size: 25)).fontWeight(.thin)
+                                Text(timeDifference ?? "").foregroundColor(Color(red: changeColor.generalTextRed/255, green: changeColor.generalTextGreen/255, blue: changeColor.generalTextBlue/255, opacity: 1.0)).font(.system(size: 25)).fontWeight(.thin)
                             }
                             .padding(.bottom, 50)
                         }
@@ -80,10 +77,10 @@ struct ArrivalsView: View {
                         Spacer()
                         Divider().foregroundColor(.white)
                         HStack {
-                            Image(systemName: "arrow.up.circle").foregroundColor(.white)
-                            Text("Uptown").fontWeight(.thin)
-                            Image(systemName: "arrow.down.circle").foregroundColor(.white)
-                            Text("Downtown").fontWeight(.thin)
+                            Image(systemName: "arrow.up.circle").foregroundColor(Color(red: changeColor.arrowRed/255, green: changeColor.arrowGreen/255, blue: changeColor.arrowBlue/255, opacity: 1.0))
+                            Text("Uptown").fontWeight(.thin).foregroundColor(Color(red: changeColor.generalTextRed/255, green: changeColor.generalTextGreen/255, blue: changeColor.generalTextBlue/255, opacity: 1.0))
+                            Image(systemName: "arrow.down.circle").foregroundColor(Color(red: changeColor.arrowRed/255, green: changeColor.arrowGreen/255, blue: changeColor.arrowBlue/255, opacity: 1.0))
+                            Text("Downtown").fontWeight(.thin).foregroundColor(Color(red: changeColor.generalTextRed/255, green: changeColor.generalTextGreen/255, blue: changeColor.generalTextBlue/255, opacity: 1.0))
                         }.zIndex(20)
                     }
                     Spacer()
