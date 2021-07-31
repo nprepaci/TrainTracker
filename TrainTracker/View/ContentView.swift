@@ -41,9 +41,7 @@ struct ContentView: View {
     @State var changeColor = ChangeColor.shared
     @StateObject var api = API()
     @State private var angle: Double = 0
-    @State private var showingPopover = false
-    @EnvironmentObject var test: SelectedStation
-    @State var timediff = ""
+    //@State var timediff = ""
     //let impactMed = UIImpactFeedbackGenerator(style: .medium)
     
     var body: some View {
@@ -90,6 +88,7 @@ struct ContentView: View {
                     }
                 }
             }
+            Color(red: changeColor.backgroundRed/255, green: changeColor.backgroundGreen/255, blue: changeColor.backgroundBlue/255, opacity: 1.0).edgesIgnoringSafeArea(.all)
         }
     }
 }
