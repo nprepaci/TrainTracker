@@ -10,8 +10,8 @@ import SwiftUI
 
 struct ListRow: View {
     
-    @State var stationName: String
-    @State var changeColor = ChangeColor.shared
+    var stationName: String
+    var changeColor = ChangeColor.shared
     
     var body: some View {
         GeometryReader { geometry in

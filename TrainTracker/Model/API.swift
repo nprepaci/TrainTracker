@@ -55,7 +55,6 @@ class API: ObservableObject {
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data {
                 if let response = try? JSONDecoder().decode(GTFSObject.self, from: data) {
-                    // print("\n-------> response: \(response)\n")
                     DispatchQueue.main.async {
                         self.storedData.data = response.data
                     }
@@ -65,3 +64,6 @@ class API: ObservableObject {
         }.resume()
     }
 }
+
+//http://127.0.0.1:5000/by-route/
+//https://traintracker.pythonanywhere.com

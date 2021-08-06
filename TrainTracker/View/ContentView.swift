@@ -41,7 +41,6 @@ struct ContentView: View {
     @State var changeColor = ChangeColor.shared
     @StateObject var api = API()
     @State private var angle: Double = 0
-    //@State var timediff = ""
     //let impactMed = UIImpactFeedbackGenerator(style: .medium)
     
     var body: some View {

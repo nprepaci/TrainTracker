@@ -70,9 +70,6 @@ struct SettingsView: View {
                             colorScheme.generalTextRed = 255
                             colorScheme.generalTextGreen = 255
                             colorScheme.generalTextBlue = 255
-                            //            colorScheme.generalTextRed = 60
-                            //            colorScheme.generalTextGreen = 65
-                            //            colorScheme.generalTextBlue = 92
                             
                             colorScheme.arrowRed = 255
                             colorScheme.arrowGreen = 255
@@ -81,10 +78,6 @@ struct SettingsView: View {
                             colorScheme.rowBackgroundRed = 51
                             colorScheme.rowBackgroundGreen = 41
                             colorScheme.rowBackgroundBlue = 64
-                            
-                            //            colorScheme.rowBackgroundRed = 31
-                            //            colorScheme.rowBackgroundGreen = 26
-                            //            colorScheme.rowBackgroundBlue = 36
                             
                             colorScheme.blueGreyChecked = ""
                             colorScheme.midnightPlumChecked = "checkmark"
@@ -100,6 +93,7 @@ struct SettingsView: View {
                         Spacer()
                         Image(systemName: checkmark2)
                     }
+                    
                     HStack {
                         Button("True Dark") {
                             colorScheme.backgroundRed = 21
@@ -186,7 +180,6 @@ struct SettingsView: View {
                         Image(systemName: checkmark4)
                     }
                 }
-                
                 .navigationTitle("Settings")
                 .listStyle(PlainListStyle())
                 .onAppear {
