@@ -186,15 +186,15 @@ struct SettingsView: View {
                         Image(systemName: checkmark4)
                     }
                 }
-                .listRowBackground(Color(red: colorScheme.backgroundRed/255, green: colorScheme.backgroundGreen/255, blue: colorScheme.backgroundBlue/255, opacity: 1.0))
-            }
-            .navigationTitle("Settings")
-            .listStyle(PlainListStyle())
-            .onAppear {
-                checkmark1 = colorScheme.blueGreyChecked
-                checkmark2 = colorScheme.midnightPlumChecked
-                checkmark3 = colorScheme.trueDarkChecked
-                checkmark4 = colorScheme.vibrantChecked
+                
+                .navigationTitle("Settings")
+                .listStyle(PlainListStyle())
+                .onAppear {
+                    checkmark1 = colorScheme.blueGreyChecked
+                    checkmark2 = colorScheme.midnightPlumChecked
+                    checkmark3 = colorScheme.trueDarkChecked
+                    checkmark4 = colorScheme.vibrantChecked
+                }
             }
         }
     }
