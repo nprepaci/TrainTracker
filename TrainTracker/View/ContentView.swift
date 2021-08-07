@@ -51,7 +51,6 @@ struct ContentView: View {
                     ForEach(self.api.storedData.data, id: \.id) { index in
                         NavigationLink(destination: ArrivalsView(stationName: index.name ?? "", northRoute: index.n ?? [NS].init(), southRoute: index.s ?? [NS].init())) {
                             ListRow(stationName: index.name ?? "")
-                            Text(index.isRefreshed)
                         }
                         //.onTapGesture {
                          //let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
