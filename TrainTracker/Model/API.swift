@@ -47,6 +47,7 @@ class API: ObservableObject {
     @Published var storedData = GTFSObject(data: [], updated: nil)
     
     func loadData() {
+        //Enter your local server address below. Please be sure not to change anything after and including "/by-route"
         guard let url = URL(string: "http://127.0.0.1:5000/by-route/\(chosenStation.selectedStation)") else {
             print("Your API end point is Invalid")
             return
@@ -65,5 +66,4 @@ class API: ObservableObject {
     }
 }
 
-//http://127.0.0.1:5000/by-route/
-//https://traintracker.pythonanywhere.com
+
