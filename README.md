@@ -35,7 +35,3 @@ Users can change the color scheme. This can be done by selecting the gear icon o
 ## Help
 
 Submit a [GitHub Issues request](https://github.com/nprepaci/TrainTracker/issues). 
-
-## License
-
-
