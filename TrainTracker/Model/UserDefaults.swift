@@ -38,9 +38,15 @@ class ChangeColor: ObservableObject {
     
 }
 
+class SelectedStation: ObservableObject {
+    @Published var selectedStation: String = "A"
+    public static let shared = SelectedStation()
+}
+
 class SaveData {
     
     var colorScheme = ChangeColor.shared
+    var changeStation = SelectedStation.shared
     
     func saveColorChoice() {
         UserDefaults.standard.set(colorScheme.backgroundRed, forKey: "BackgroundRed")
@@ -67,5 +73,10 @@ class SaveData {
         UserDefaults.standard.set(colorScheme.midnightPlumChecked, forKey: "midnightPlumChecked")
         UserDefaults.standard.set(colorScheme.trueDarkChecked, forKey: "trueDarkChecked")
         UserDefaults.standard.set(colorScheme.vibrantChecked, forKey: "vibrantChecked")
+    }
+    
+    func saveDefaultStation() {
+        UserDefaults.standard.set(changeStation.selectedStation, forKey: "UserSelectedStation")
+        print("Save successful")
     }
 }

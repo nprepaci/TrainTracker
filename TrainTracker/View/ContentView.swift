@@ -36,9 +36,12 @@ struct ContentView: View {
         self.changeColor.midnightPlumChecked = UserDefaults.standard.string(forKey: "midnightPlumChecked") ?? ""
         self.changeColor.trueDarkChecked = UserDefaults.standard.string(forKey: "trueDarkChecked") ?? ""
         self.changeColor.vibrantChecked = UserDefaults.standard.string(forKey: "vibrantChecked") ?? ""
+        
+        self.chosenStation.selectedStation = UserDefaults.standard.string(forKey: "UserSelectedStation") ?? ""
    }
     
     @State var changeColor = ChangeColor.shared
+    @State var chosenStation = SelectedStation.shared
     @StateObject var api = API()
     @State private var angle: Double = 0
     //let impactMed = UIImpactFeedbackGenerator(style: .medium)

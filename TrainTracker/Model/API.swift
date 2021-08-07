@@ -36,11 +36,6 @@ struct NS: Codable, Hashable {
     let time: String?
 }
 
-class SelectedStation: ObservableObject {
-    @Published var selectedStation: String = "A"
-    public static let shared = SelectedStation()
-}
-
 class API: ObservableObject {
     
     var chosenStation = SelectedStation.shared

@@ -15,7 +15,10 @@ struct SettingsView: View {
     @State private var checkmark2 = ""
     @State private var checkmark3 = ""
     @State private var checkmark4 = ""
-
+    var stationArray = ["1", "2", "3", "4", "5", "6", "7", "A", "C", "E", "N", "Q", "R", "W", "B", "D", "F", "M", "L", "G", "J", "Z"]
+    @State var stationToPassToAPI = ""
+    @State var chosenStation = SelectedStation.shared
+    
     var body: some View {
         ZStack {
             Color(red: colorScheme.backgroundRed/255, green: colorScheme.backgroundGreen/255, blue: colorScheme.backgroundBlue/255, opacity: 1.0).edgesIgnoringSafeArea(.all).edgesIgnoringSafeArea(.all)
@@ -159,13 +162,7 @@ struct SettingsView: View {
                             colorScheme.rowBackgroundRed = 35
                             colorScheme.rowBackgroundGreen = 35
                             colorScheme.rowBackgroundBlue = 35
-                            
-                            ////THIS IS A NICE GREY
-                            //            colorScheme.rowBackgroundRed = 43
-                            //            colorScheme.rowBackgroundGreen = 43
-                            //            colorScheme.rowBackgroundBlue = 43
-                            //
-                            
+
                             colorScheme.blueGreyChecked = ""
                             colorScheme.midnightPlumChecked = ""
                             colorScheme.trueDarkChecked = ""
@@ -189,6 +186,19 @@ struct SettingsView: View {
                     checkmark3 = colorScheme.trueDarkChecked
                     checkmark4 = colorScheme.vibrantChecked
                 }
+                
+                Section(header: Text("Default Train Line")) {
+                    Picker("Selected Train Line", selection: $stationToPassToAPI) {
+                        ForEach(stationArray, id: \.self) {
+                            Text($0)
+                        }.onChange(of: stationToPassToAPI) { value in
+                            chosenStation.selectedStation = stationToPassToAPI
+                            saveData.saveDefaultStation()
+                        }
+                    }
+                }
+            }.onAppear {
+                stationToPassToAPI = chosenStation.selectedStation
             }
         }
     }
