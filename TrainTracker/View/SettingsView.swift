@@ -15,7 +15,7 @@ struct SettingsView: View {
     @State private var checkmark2 = ""
     @State private var checkmark3 = ""
     @State private var checkmark4 = ""
-    
+
     var body: some View {
         ZStack {
             Color(red: colorScheme.backgroundRed/255, green: colorScheme.backgroundGreen/255, blue: colorScheme.backgroundBlue/255, opacity: 1.0).edgesIgnoringSafeArea(.all).edgesIgnoringSafeArea(.all)
@@ -51,6 +51,7 @@ struct SettingsView: View {
                             checkmark2 = ""
                             checkmark3 = ""
                             checkmark4 = ""
+                            
                             saveData.saveColorChoice()
                         }
                         Spacer()
