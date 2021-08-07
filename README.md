@@ -28,9 +28,11 @@ Once the URL is updated, the app can be launched. If successful, you will see a 
 
 Users can click on a station from the main view. Clicking on a station will show arrival details of trains going both uptown and downtown (denoted by an up or down arrow). This arrivals view will refresh every minute. This is denoted by the "Updated X seconds ago" label.
 
-The default train line selected is "A". Users can change the train line by clicking the button on the top right of the landing screen. Selecting a new station will automatically bring the user back to the Station View. The Station View will be refreshed and show all stations for a given train line.
+Users can change the train line by clicking the button on the top right of the landing screen. Selecting a new station will automatically bring the user back to the Station View. The Station View will be refreshed and show all stations for a given train line.
 
-Users can change the color scheme. This can be done by selecting the gear icon on the top left of the Station View. This will take the user to the settings page where the color theme can be changed.
+The default train line selected is "A". Users can change the default train line via the settings screen. This can be accessed by clicking the gear icon found at the top left of the main Station View. The default train line determines which stations will display on app launch.
+
+Users can change the color scheme. Users can change the preferred color scheme via the settings screen.
 
 ## Help
 
