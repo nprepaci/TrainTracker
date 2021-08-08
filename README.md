@@ -12,6 +12,8 @@ This project could not have been developed without the use of [MTA Realtime API 
 
 ## Running The Project
 
+**This app was built utilizing XCode 13 Beta 4. Running this app requires XCode 13 Beta (or newer version of XCode). [Please click here to download](https://developer.apple.com/xcode/resources/).**
+
 You will first need to set up your own local MTAPI server. Instructions can be found via the following link: [MTA Realtime API JSON Proxy](https://github.com/jonthornton/MTAPI)
 
 Please note: in order utilize the server linked above, you will need your own MTA API key. Please use the following link to get started: [MTA's realtime subway feed](https://api.mta.info/#/landing)
