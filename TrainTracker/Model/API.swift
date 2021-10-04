@@ -60,3 +60,4 @@ class API: ObservableObject {
         }.resume()
     }
 }
+//optimizations
