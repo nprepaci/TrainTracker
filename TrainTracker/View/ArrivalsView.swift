@@ -104,16 +104,23 @@ struct ArrivalsView: View {
     }
     
     func calculateTimeDifference(arrivalTime: String?) -> String? {
+      //assigns dateformatter to a variable
         let RFC3339DateFormatter = DateFormatter()
+        //assings to english locale
         RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        //specifies date format
         RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+      //specifies timezone offset
         RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
         
+      //get arrival time from API and assigns it to a variable
         let trainArrivalTime = arrivalTime
+      //converts date into format that a calculation can be performed with
         let date2 = RFC3339DateFormatter.date(from: trainArrivalTime ?? "")
         var timeDifference = ""
         
         if let d2 = date2 {
+          //sends current date time to calculation (func timeDiff) to get minuets adn then assigns to variable for display to user
             let (minutes) = timeDiff(d2)
             timeDifference = "\(minutes) min"
         }
@@ -122,9 +129,12 @@ struct ArrivalsView: View {
     
     func timeDiff(_ t2: Date) -> (Int) {
         
+      //current date
         let date = Date()
         let calendar = Calendar.current
+      //gets current time in minuets
         let minutes = calendar.component(.minute, from: date)
+      //gets current time in minuets for time passed in by API
         let m2 = Calendar.current.component(.minute, from: t2)
         
         //handles the issue if train times do not fall within the same hour

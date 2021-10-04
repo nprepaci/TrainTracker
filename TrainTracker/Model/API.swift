@@ -60,5 +60,3 @@ class API: ObservableObject {
         }.resume()
     }
 }
-
-
