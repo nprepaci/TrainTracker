@@ -9,203 +9,131 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    var colorScheme = ChangeColor.shared
-    var saveData = SaveData()
-    @State private var checkmark1 = ""
-    @State private var checkmark2 = ""
-    @State private var checkmark3 = ""
-    @State private var checkmark4 = ""
-    var stationArray = ["1", "2", "3", "4", "5", "6", "7", "A", "C", "E", "N", "Q", "R", "W", "B", "D", "F", "M", "L", "G", "J", "Z"]
+    // MARK: Properties
+    @ObservedObject var userPreferences: UserPreferences
     @State var stationToPassToAPI = ""
-    @State var chosenStation = SelectedStation.shared
+    var stationArray = ["1", "2", "3", "4", "5", "6", "7", "A", "C", "E", "N", "Q", "R", "W", "B", "D", "F", "M", "L", "G", "J", "Z"]
     
+    // MARK: View
     var body: some View {
         ZStack {
-            Color(red: colorScheme.backgroundRed/255, green: colorScheme.backgroundGreen/255, blue: colorScheme.backgroundBlue/255, opacity: 1.0).edgesIgnoringSafeArea(.all).edgesIgnoringSafeArea(.all)
+            Color(red: userPreferences.backgroundRed / 255,
+                  green: userPreferences.backgroundGreen / 255,
+                  blue: userPreferences.backgroundBlue / 255,
+                  opacity: 1.0).edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.all)
             List {
                 Section(header: Text("Display Settings")) {
                     HStack {
                         Button("Cool Morning Haze") {
-                            colorScheme.backgroundRed = 29
-                            colorScheme.backgroundGreen = 32
-                            colorScheme.backgroundBlue = 37
-                            
-                            colorScheme.navButtonsRed = 29
-                            colorScheme.navButtonsGreen = 222
-                            colorScheme.navButtonsBlue = 203
-                            
-                            colorScheme.generalTextRed = 255
-                            colorScheme.generalTextGreen = 255
-                            colorScheme.generalTextBlue = 255
-                            
-                            colorScheme.arrowRed = 255
-                            colorScheme.arrowGreen = 255
-                            colorScheme.arrowBlue = 255
-                            
-                            colorScheme.rowBackgroundRed = 46
-                            colorScheme.rowBackgroundGreen = 68
-                            colorScheme.rowBackgroundBlue = 90
-                            
-                            colorScheme.blueGreyChecked = "checkmark"
-                            colorScheme.midnightPlumChecked = ""
-                            colorScheme.trueDarkChecked = ""
-                            colorScheme.vibrantChecked = ""
-                            checkmark1 = "checkmark"
-                            checkmark2 = ""
-                            checkmark3 = ""
-                            checkmark4 = ""
-                            
-                            saveData.saveColorChoice()
+                            userPreferences.updateColorScheme(backgroundRed: 29,
+                                                              backgroundGreen: 32,
+                                                              backgroundBlue: 37,
+                                                              navButtonsRed: 29,
+                                                              navButtonsGreen: 222,
+                                                              navButtonsBlue: 203,
+                                                              generalTextRed: 255,
+                                                              generalTextGreen: 255,
+                                                              generalTextBlue: 255,
+                                                              arrowRed: 255,
+                                                              arrowGreen: 255,
+                                                              arrowBlue: 255,
+                                                              rowBackgroundRed: 44,
+                                                              rowBackgroundGreen: 68,
+                                                              rowBackgroundBlue: 90,
+                                                              blueGreyChecked: "checkmark",
+                                                              checkmark1: "checkmark")
                         }
                         Spacer()
-                        Image(systemName: checkmark1)
+                        Image(systemName: userPreferences.blueGreyChecked)
                     }
-                    
                     HStack {
                         Button("Midnight Plum") {
-                            colorScheme.backgroundRed = 21
-                            colorScheme.backgroundGreen = 21
-                            colorScheme.backgroundBlue = 21
-                            
-                            colorScheme.navButtonsRed = 180
-                            colorScheme.navButtonsGreen = 165
-                            colorScheme.navButtonsBlue = 165
-                            
-                            colorScheme.generalTextRed = 255
-                            colorScheme.generalTextGreen = 255
-                            colorScheme.generalTextBlue = 255
-                            
-                            colorScheme.arrowRed = 255
-                            colorScheme.arrowGreen = 255
-                            colorScheme.arrowBlue = 255
-                            
-                            colorScheme.rowBackgroundRed = 51
-                            colorScheme.rowBackgroundGreen = 41
-                            colorScheme.rowBackgroundBlue = 64
-                            
-                            colorScheme.blueGreyChecked = ""
-                            colorScheme.midnightPlumChecked = "checkmark"
-                            colorScheme.trueDarkChecked = ""
-                            colorScheme.vibrantChecked = ""
-                            checkmark1 = ""
-                            checkmark2 = "checkmark"
-                            checkmark3 = ""
-                            checkmark4 = ""
-                            
-                            saveData.saveColorChoice()
+                            userPreferences.updateColorScheme(backgroundRed: 21,
+                                                              backgroundGreen: 21,
+                                                              backgroundBlue: 21,
+                                                              navButtonsRed: 180,
+                                                              navButtonsGreen: 165,
+                                                              navButtonsBlue: 165,
+                                                              generalTextRed: 255,
+                                                              generalTextGreen: 255,
+                                                              generalTextBlue: 255,
+                                                              arrowRed: 255,
+                                                              arrowGreen: 255,
+                                                              arrowBlue: 255,
+                                                              rowBackgroundRed: 51,
+                                                              rowBackgroundGreen: 41,
+                                                              rowBackgroundBlue: 64,
+                                                              midnightPlumChecked: "checkmark",
+                                                              checkmark2: "checkmark")
                         }
                         Spacer()
-                        Image(systemName: checkmark2)
+                        Image(systemName: userPreferences.midnightPlumChecked)
                     }
-                    
                     HStack {
                         Button("True Dark") {
-                            colorScheme.backgroundRed = 21
-                            colorScheme.backgroundGreen = 21
-                            colorScheme.backgroundBlue = 21
-                            
-                            colorScheme.navButtonsRed = 216
-                            colorScheme.navButtonsGreen = 146
-                            colorScheme.navButtonsBlue = 22
-                            
-                            colorScheme.generalTextRed = 255
-                            colorScheme.generalTextGreen = 255
-                            colorScheme.generalTextBlue = 255
-                            
-                            colorScheme.arrowRed = 216
-                            colorScheme.arrowGreen = 146
-                            colorScheme.arrowBlue = 22
-                            
-                            colorScheme.rowBackgroundRed = 35
-                            colorScheme.rowBackgroundGreen = 35
-                            colorScheme.rowBackgroundBlue = 35
-                            
-                            ////THIS IS A NICE GREY
-                            //            colorScheme.rowBackgroundRed = 43
-                            //            colorScheme.rowBackgroundGreen = 43
-                            //            colorScheme.rowBackgroundBlue = 43
-                            //
-                            
-                            colorScheme.blueGreyChecked = ""
-                            colorScheme.midnightPlumChecked = ""
-                            colorScheme.trueDarkChecked = "checkmark"
-                            colorScheme.vibrantChecked = ""
-                            checkmark1 = ""
-                            checkmark2 = ""
-                            checkmark3 = "checkmark"
-                            checkmark4 = ""
-                            
-                            saveData.saveColorChoice()
+                            userPreferences.updateColorScheme(backgroundRed: 21,
+                                                              backgroundGreen: 21,
+                                                              backgroundBlue: 21,
+                                                              navButtonsRed: 216,
+                                                              navButtonsGreen: 146,
+                                                              navButtonsBlue: 22,
+                                                              generalTextRed: 255,
+                                                              generalTextGreen: 255,
+                                                              generalTextBlue: 255,
+                                                              arrowRed: 216,
+                                                              arrowGreen: 146,
+                                                              arrowBlue: 22,
+                                                              rowBackgroundRed: 35,
+                                                              rowBackgroundGreen: 35,
+                                                              rowBackgroundBlue: 35,
+                                                              trueDarkChecked: "checkmark",
+                                                              checkmark3: "checkmark")
                         }
                         Spacer()
-                        Image(systemName: checkmark3)
+                        Image(systemName: userPreferences.trueDarkChecked)
                     }
-                    
                     HStack {
                         Button("Vibrant") {
-                            colorScheme.backgroundRed = 240
-                            colorScheme.backgroundGreen = 84
-                            colorScheme.backgroundBlue = 84
-                            
-                            colorScheme.navButtonsRed = 216
-                            colorScheme.navButtonsGreen = 146
-                            colorScheme.navButtonsBlue = 22
-                            
-                            colorScheme.generalTextRed = 255
-                            colorScheme.generalTextGreen = 255
-                            colorScheme.generalTextBlue = 255
-                            
-                            colorScheme.arrowRed = 216
-                            colorScheme.arrowGreen = 146
-                            colorScheme.arrowBlue = 22
-                            
-                            colorScheme.rowBackgroundRed = 35
-                            colorScheme.rowBackgroundGreen = 35
-                            colorScheme.rowBackgroundBlue = 35
-
-                            colorScheme.blueGreyChecked = ""
-                            colorScheme.midnightPlumChecked = ""
-                            colorScheme.trueDarkChecked = ""
-                            colorScheme.vibrantChecked = "checkmark"
-                            checkmark1 = ""
-                            checkmark2 = ""
-                            checkmark3 = ""
-                            checkmark4 = "checkmark"
-                            
-                            saveData.saveColorChoice()
+                            userPreferences.updateColorScheme(backgroundRed: 240,
+                                                              backgroundGreen: 84,
+                                                              backgroundBlue: 84,
+                                                              navButtonsRed: 216,
+                                                              navButtonsGreen: 146,
+                                                              navButtonsBlue: 22,
+                                                              generalTextRed: 255,
+                                                              generalTextGreen: 255,
+                                                              generalTextBlue: 255,
+                                                              arrowRed: 216,
+                                                              arrowGreen: 146,
+                                                              arrowBlue: 22,
+                                                              rowBackgroundRed: 35,
+                                                              rowBackgroundGreen: 35,
+                                                              rowBackgroundBlue: 35,
+                                                              vibrantChecked: "checkmark",
+                                                              checkmark4: "checkmark")
                         }
                         Spacer()
-                        Image(systemName: checkmark4)
+                        Image(systemName: userPreferences.vibrantChecked)
                     }
                 }
                 .navigationTitle("Settings")
                 .listStyle(PlainListStyle())
-                .onAppear {
-                    checkmark1 = colorScheme.blueGreyChecked
-                    checkmark2 = colorScheme.midnightPlumChecked
-                    checkmark3 = colorScheme.trueDarkChecked
-                    checkmark4 = colorScheme.vibrantChecked
-                }
-                
                 Section(header: Text("Default Train Line")) {
                     Picker("Selected Train Line", selection: $stationToPassToAPI) {
                         ForEach(stationArray, id: \.self) {
                             Text($0)
-                        }.onChange(of: stationToPassToAPI) { value in
-                            chosenStation.selectedStation = stationToPassToAPI
-                            saveData.saveDefaultStation()
+                        }
+                        .onChange(of: stationToPassToAPI) { value in
+                            userPreferences.selectedStation = stationToPassToAPI
+                            userPreferences.saveDefaultStation()
                         }
                     }
                 }
-            }.onAppear {
-                stationToPassToAPI = chosenStation.selectedStation
+            }
+            .onAppear {
+                stationToPassToAPI = userPreferences.selectedStation
             }
         }
-    }
-}
-
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView()
     }
 }

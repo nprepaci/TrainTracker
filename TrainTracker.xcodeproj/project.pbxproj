@@ -7,20 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C02D482298EDFC700F3D696 /* TrainCodingKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C02D481298EDFC700F3D696 /* TrainCodingKeys.swift */; };
+		7C02D484298F0E6D00F3D696 /* ArrivalsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C02D483298F0E6D00F3D696 /* ArrivalsModel.swift */; };
 		7C247CF826AD0E0400E3BE71 /* ChangeStationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C247CF726AD0E0400E3BE71 /* ChangeStationView.swift */; };
 		7C34201C26A7B5460037E4B0 /* TrainTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C34201B26A7B5460037E4B0 /* TrainTrackerApp.swift */; };
 		7C34201E26A7B5460037E4B0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C34201D26A7B5460037E4B0 /* ContentView.swift */; };
 		7C34202026A7B54B0037E4B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C34201F26A7B54B0037E4B0 /* Assets.xcassets */; };
 		7C34202326A7B54B0037E4B0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C34202226A7B54B0037E4B0 /* Preview Assets.xcassets */; };
-		7C34202526A7B54B0037E4B0 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C34202426A7B54B0037E4B0 /* Persistence.swift */; };
 		7C34202826A7B54B0037E4B0 /* TrainTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C34202626A7B54B0037E4B0 /* TrainTracker.xcdatamodeld */; };
 		7C34203226A7B54B0037E4B0 /* TrainTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C34203126A7B54B0037E4B0 /* TrainTrackerTests.swift */; };
 		7C34203C26A7B54B0037E4B0 /* TrainTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C34203B26A7B54B0037E4B0 /* TrainTrackerUITests.swift */; };
-		7C34204926A7B7300037E4B0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C34204826A7B7300037E4B0 /* API.swift */; };
+		7C34204926A7B7300037E4B0 /* TrainDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C34204826A7B7300037E4B0 /* TrainDataViewModel.swift */; };
 		7C777F8B26AA7FE90085A5AD /* ListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C777F8A26AA7FE90085A5AD /* ListRow.swift */; };
 		7CB308B726B116D2000854CD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB308B626B116D2000854CD /* SettingsView.swift */; };
 		7CE1909426ABA00700E6E1DB /* ArrivalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE1909326ABA00700E6E1DB /* ArrivalsView.swift */; };
-		7CEAFFD026B39ADF0041CE98 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEAFFCF26B39ADF0041CE98 /* UserDefaults.swift */; };
+		7CEAFFD026B39ADF0041CE98 /* UserPreferencesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEAFFCF26B39ADF0041CE98 /* UserPreferencesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,23 +42,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C02D481298EDFC700F3D696 /* TrainCodingKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainCodingKeys.swift; sourceTree = "<group>"; };
+		7C02D483298F0E6D00F3D696 /* ArrivalsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivalsModel.swift; sourceTree = "<group>"; };
 		7C247CF726AD0E0400E3BE71 /* ChangeStationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeStationView.swift; sourceTree = "<group>"; };
 		7C34201826A7B5460037E4B0 /* TrainTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrainTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C34201B26A7B5460037E4B0 /* TrainTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainTrackerApp.swift; sourceTree = "<group>"; };
 		7C34201D26A7B5460037E4B0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7C34201F26A7B54B0037E4B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C34202226A7B54B0037E4B0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		7C34202426A7B54B0037E4B0 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		7C34202726A7B54B0037E4B0 /* TrainTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrainTracker.xcdatamodel; sourceTree = "<group>"; };
 		7C34202D26A7B54B0037E4B0 /* TrainTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrainTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C34203126A7B54B0037E4B0 /* TrainTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainTrackerTests.swift; sourceTree = "<group>"; };
 		7C34203726A7B54B0037E4B0 /* TrainTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrainTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C34203B26A7B54B0037E4B0 /* TrainTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainTrackerUITests.swift; sourceTree = "<group>"; };
-		7C34204826A7B7300037E4B0 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		7C34204826A7B7300037E4B0 /* TrainDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainDataViewModel.swift; sourceTree = "<group>"; };
 		7C777F8A26AA7FE90085A5AD /* ListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRow.swift; sourceTree = "<group>"; };
 		7CB308B626B116D2000854CD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7CE1909326ABA00700E6E1DB /* ArrivalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivalsView.swift; sourceTree = "<group>"; };
-		7CEAFFCF26B39ADF0041CE98 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		7CEAFFCF26B39ADF0041CE98 /* UserPreferencesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,9 +147,8 @@
 		7C34204A26A7B7360037E4B0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7CEAFFCF26B39ADF0041CE98 /* UserDefaults.swift */,
-				7C34204826A7B7300037E4B0 /* API.swift */,
-				7C34202426A7B54B0037E4B0 /* Persistence.swift */,
+				7C02D481298EDFC700F3D696 /* TrainCodingKeys.swift */,
+				7C02D483298F0E6D00F3D696 /* ArrivalsModel.swift */,
 				7C34202626A7B54B0037E4B0 /* TrainTracker.xcdatamodeld */,
 			);
 			path = Model;
@@ -156,6 +157,7 @@
 		7C34204B26A7B7460037E4B0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7C777F8A26AA7FE90085A5AD /* ListRow.swift */,
 				7C34201D26A7B5460037E4B0 /* ContentView.swift */,
 				7CE1909326ABA00700E6E1DB /* ArrivalsView.swift */,
 				7C247CF726AD0E0400E3BE71 /* ChangeStationView.swift */,
@@ -167,7 +169,8 @@
 		7C34204C26A7B7510037E4B0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				7C777F8A26AA7FE90085A5AD /* ListRow.swift */,
+				7CEAFFCF26B39ADF0041CE98 /* UserPreferencesViewModel.swift */,
+				7C34204826A7B7300037E4B0 /* TrainDataViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -302,16 +305,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C34202526A7B54B0037E4B0 /* Persistence.swift in Sources */,
 				7C34201E26A7B5460037E4B0 /* ContentView.swift in Sources */,
 				7CE1909426ABA00700E6E1DB /* ArrivalsView.swift in Sources */,
 				7CB308B726B116D2000854CD /* SettingsView.swift in Sources */,
 				7C777F8B26AA7FE90085A5AD /* ListRow.swift in Sources */,
-				7CEAFFD026B39ADF0041CE98 /* UserDefaults.swift in Sources */,
+				7CEAFFD026B39ADF0041CE98 /* UserPreferencesViewModel.swift in Sources */,
 				7C34201C26A7B5460037E4B0 /* TrainTrackerApp.swift in Sources */,
+				7C02D482298EDFC700F3D696 /* TrainCodingKeys.swift in Sources */,
 				7C247CF826AD0E0400E3BE71 /* ChangeStationView.swift in Sources */,
 				7C34202826A7B54B0037E4B0 /* TrainTracker.xcdatamodeld in Sources */,
-				7C34204926A7B7300037E4B0 /* API.swift in Sources */,
+				7C34204926A7B7300037E4B0 /* TrainDataViewModel.swift in Sources */,
+				7C02D484298F0E6D00F3D696 /* ArrivalsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

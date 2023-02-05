@@ -8,44 +8,70 @@
 import SwiftUI
 
 struct ArrivalsView: View {
-    
-    @StateObject var api = API()
+    // MARK: Properties
+    @ObservedObject var viewModel: TrainDataViewModel
+    @ObservedObject var userPreferences: UserPreferences
     @State var timerRefreshCount = 0
-    var stationName: String
-    var northRoute: [NS]
-    var southRoute: [NS]
-    var backgroundColor = Color(red: 29/255, green: 32/255, blue: 37/255, opacity: 1.0)
-    let timer = Timer.publish(every: 15, on: .main, in: .common).autoconnect()
-    var changeColor = ChangeColor.shared
     
+    // MARK: Constants
+    let model: ArrivalsModel
+    let timer = Timer.publish(every: 15, on: .main, in: .common).autoconnect()
+    
+    // MARK: View
     var body: some View {
         ZStack {
-            Color(red: changeColor.backgroundRed/255, green: changeColor.backgroundGreen/255, blue: changeColor.backgroundBlue/255, opacity: 1.0).edgesIgnoringSafeArea(.all)
+            Color(red: userPreferences.backgroundRed / 255,
+                  green: userPreferences.backgroundGreen / 255,
+                  blue: userPreferences.backgroundBlue / 255,
+                  opacity: 1.0)
+            .edgesIgnoringSafeArea(.all)
             ScrollView {
                 HStack(alignment: .top) {
                     VStack(alignment: .leading) {
-                        ForEach(northRoute, id: \.self) { index in
+                        ForEach(model.northRoute, id: \.self) { index in
                             HStack {
-                                Image(systemName: "arrow.up.circle").foregroundColor(Color(red: changeColor.arrowRed/255, green: changeColor.arrowGreen/255, blue: changeColor.arrowBlue/255, opacity: 1.0)).font(.system(size: 27))
-                                
-                                Image(index.route ?? "").resizable().frame(width: 30, height: 30)
-                                
+                                Image(systemName: "arrow.up.circle")
+                                    .foregroundColor(Color(red: userPreferences.arrowRed / 255,
+                                                           green: userPreferences.arrowGreen / 255, blue:
+                                                            userPreferences.arrowBlue / 255,
+                                                           opacity: 1.0))
+                                    .font(.system(size: 27))
+                                Image(index.route ?? "")
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
                                 let timeDifference = calculateTimeDifference(arrivalTime: index.time ?? "")
-                                Text(timeDifference ?? "").foregroundColor(Color(red: changeColor.generalTextRed/255, green: changeColor.generalTextGreen/255, blue: changeColor.generalTextBlue/255, opacity: 1.0)).font(.system(size: 25)).fontWeight(.thin)
+                                Text(timeDifference ?? "")
+                                    .foregroundColor(Color(red: userPreferences.generalTextRed / 255,
+                                                           green: userPreferences.generalTextGreen / 255,
+                                                           blue: userPreferences.generalTextBlue / 255,
+                                                           opacity: 1.0)).font(.system(size: 25))
+                                    .fontWeight(.thin)
                             }
                             .padding(.bottom, 50)
                         }
                     }
                     Spacer()
                     VStack(alignment: .leading) {
-                        ForEach(southRoute, id: \.self) { index in
+                        ForEach(model.southRoute, id: \.self) { index in
                             HStack {
-                                Image(systemName: "arrow.down.circle").foregroundColor(Color(red: changeColor.arrowRed/255, green: changeColor.arrowGreen/255, blue: changeColor.arrowBlue/255, opacity: 1.0)).font(.system(size: 27))
+                                Image(systemName: "arrow.down.circle")
+                                    .foregroundColor(Color(red: userPreferences.arrowRed / 255,
+                                                           green: userPreferences.arrowGreen / 255,
+                                                           blue: userPreferences.arrowBlue / 255,
+                                                           opacity: 1.0))
+                                    .font(.system(size: 27))
                                 
-                                Image(index.route ?? "").resizable().frame(width: 30, height: 30)
-                                
+                                Image(index.route ?? "")
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
                                 let timeDifference = calculateTimeDifference(arrivalTime: index.time ?? "")
-                                Text(timeDifference ?? "").foregroundColor(Color(red: changeColor.generalTextRed/255, green: changeColor.generalTextGreen/255, blue: changeColor.generalTextBlue/255, opacity: 1.0)).font(.system(size: 25)).fontWeight(.thin)
+                                Text(timeDifference ?? "")
+                                    .foregroundColor(Color(red: userPreferences.generalTextRed / 255,
+                                                           green: userPreferences.generalTextGreen / 255,
+                                                           blue: userPreferences.generalTextBlue / 255,
+                                                           opacity: 1.0))
+                                    .font(.system(size: 25))
+                                    .fontWeight(.thin)
                             }
                             .padding(.bottom, 50)
                         }
@@ -53,17 +79,21 @@ struct ArrivalsView: View {
                 }
                 .padding(.leading)
                 .padding(.trailing)
-                .navigationBarTitle(stationName, displayMode: .inline)
+                .navigationBarTitle(model.stationName, displayMode: .inline)
                 VStack {
                     Spacer()
-                    Text("Updated \(timerRefreshCount) seconds ago").foregroundColor(.white).fontWeight(.thin).opacity(0.5)
+                    Text("Updated \(timerRefreshCount) seconds ago")
+                        .foregroundColor(.white)
+                        .fontWeight(.thin)
+                        .opacity(0.5)
                 }
             }
             //API called every minute, updates what is displayed to user
             .onReceive(timer) { time in
                 updateTimeSinceRefresh()
             }
-            .animation(.spring().speed(0.75))
+            .animation(.spring()
+                .speed(0.75))
             .padding(.top)
             Spacer()
             //this section handles the divider, legend, and fill behind the legend
@@ -71,17 +101,43 @@ struct ArrivalsView: View {
                 ZStack {
                     VStack {
                         Spacer()
-                        Rectangle().fill( Color(red: changeColor.backgroundRed/255, green: changeColor.backgroundGreen/255, blue: changeColor.backgroundBlue/255, opacity: 1.0)).frame(width: geometry.size.width, height: 60).edgesIgnoringSafeArea(.bottom)
-                    }.edgesIgnoringSafeArea(.bottom)
+                        Rectangle().fill( Color(red: userPreferences.backgroundRed / 255,
+                                                green: userPreferences.backgroundGreen / 255,
+                                                blue: userPreferences.backgroundBlue / 255,
+                                                opacity: 1.0))
+                        .frame(width: geometry.size.width, height: 60)
+                        .edgesIgnoringSafeArea(.bottom)
+                    }
+                    .edgesIgnoringSafeArea(.bottom)
                     VStack {
                         Spacer()
                         Divider().foregroundColor(.white)
                         HStack {
-                            Image(systemName: "arrow.up.circle").foregroundColor(Color(red: changeColor.arrowRed/255, green: changeColor.arrowGreen/255, blue: changeColor.arrowBlue/255, opacity: 1.0))
-                            Text("Uptown").fontWeight(.thin).foregroundColor(Color(red: changeColor.generalTextRed/255, green: changeColor.generalTextGreen/255, blue: changeColor.generalTextBlue/255, opacity: 1.0))
-                            Image(systemName: "arrow.down.circle").foregroundColor(Color(red: changeColor.arrowRed/255, green: changeColor.arrowGreen/255, blue: changeColor.arrowBlue/255, opacity: 1.0))
-                            Text("Downtown").fontWeight(.thin).foregroundColor(Color(red: changeColor.generalTextRed/255, green: changeColor.generalTextGreen/255, blue: changeColor.generalTextBlue/255, opacity: 1.0))
-                        }.zIndex(20)
+                            Image(systemName: "arrow.up.circle")
+                                .foregroundColor(Color(red:
+                                                        userPreferences.arrowRed / 255,
+                                                       green: userPreferences.arrowGreen / 255,
+                                                       blue: userPreferences.arrowBlue / 255,
+                                                       opacity: 1.0))
+                            Text("Uptown")
+                                .fontWeight(.thin)
+                                .foregroundColor(Color(red: userPreferences.generalTextRed / 255,
+                                                       green: userPreferences.generalTextGreen / 255,
+                                                       blue: userPreferences.generalTextBlue / 255,
+                                                       opacity: 1.0))
+                            Image(systemName: "arrow.down.circle")
+                                .foregroundColor(Color(red: userPreferences.arrowRed / 255,
+                                                       green: userPreferences.arrowGreen / 255,
+                                                       blue: userPreferences.arrowBlue / 255,
+                                                       opacity: 1.0))
+                            Text("Downtown")
+                                .fontWeight(.thin)
+                                .foregroundColor(Color(red: userPreferences.generalTextRed / 255,
+                                                       green: userPreferences.generalTextGreen / 255,
+                                                       blue: userPreferences.generalTextBlue / 255,
+                                                       opacity: 1.0))
+                        }
+                        .zIndex(20)
                     }
                     Spacer()
                 }
@@ -90,16 +146,20 @@ struct ArrivalsView: View {
         }
     }
     
+    // MARK: Functions
     func updateTimeSinceRefresh() {
-        if (timerRefreshCount == 0) {
+        switch timerRefreshCount {
+        case 0:
             timerRefreshCount = 15
-        } else if (timerRefreshCount == 15) {
+        case 15:
             timerRefreshCount = 30
-        } else if (timerRefreshCount == 30) {
+        case 30:
             timerRefreshCount = 45
-        } else if (timerRefreshCount == 45) {
+        case 45:
             timerRefreshCount = 0
-            api.loadData()
+            viewModel.loadData(selectedStation: userPreferences.selectedStation)
+        default:
+            return
         }
     }
     
@@ -128,7 +188,6 @@ struct ArrivalsView: View {
     }
     
     func timeDiff(_ t2: Date) -> (Int) {
-        
       //current date
         let date = Date()
         let calendar = Calendar.current
@@ -143,11 +202,5 @@ struct ArrivalsView: View {
         } else {
             return (abs(minutes-m2))
         }
-    }
-}
-
-struct ArrivalsView_Previews: PreviewProvider {
-    static var previews: some View {
-        ArrivalsView(stationName: String.init(), northRoute: [NS].init(), southRoute: [NS].init())
     }
 }
