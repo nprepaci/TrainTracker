@@ -14,7 +14,7 @@ struct ListRow: View {
     @ObservedObject var userPrefrences: UserPreferences
     
     // MARK: Constants
-    let stationName: String
+    let model: StationModel
     
     // MARK: View
     var body: some View {
@@ -26,7 +26,7 @@ struct ListRow: View {
                       opacity: 1.0)
                 .cornerRadius(5)
                 HStack {
-                    Text(stationName)
+                    Text(model.stationName)
                         .foregroundColor(.white)
                         .font(.system(size: 25))
                         .fontWeight(.thin)

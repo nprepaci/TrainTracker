@@ -43,7 +43,7 @@ struct ContentView: View {
                                          model: arrivalsModel)
                         } label: {
                             ListRow(userPrefrences: userPreferences,
-                                    stationName: item.name ?? "")
+                                    model: StationModel(stationName: item.name ?? ""))
                             .frame(width: screenWidth - 20)
                             .padding(.bottom, 10)
                         }

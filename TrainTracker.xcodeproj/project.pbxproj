@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7C02D482298EDFC700F3D696 /* TrainCodingKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C02D481298EDFC700F3D696 /* TrainCodingKeys.swift */; };
 		7C02D484298F0E6D00F3D696 /* ArrivalsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C02D483298F0E6D00F3D696 /* ArrivalsModel.swift */; };
+		7C02D486298F417100F3D696 /* StationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C02D485298F417100F3D696 /* StationModel.swift */; };
 		7C247CF826AD0E0400E3BE71 /* ChangeStationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C247CF726AD0E0400E3BE71 /* ChangeStationView.swift */; };
 		7C34201C26A7B5460037E4B0 /* TrainTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C34201B26A7B5460037E4B0 /* TrainTrackerApp.swift */; };
 		7C34201E26A7B5460037E4B0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C34201D26A7B5460037E4B0 /* ContentView.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		7C02D481298EDFC700F3D696 /* TrainCodingKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainCodingKeys.swift; sourceTree = "<group>"; };
 		7C02D483298F0E6D00F3D696 /* ArrivalsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivalsModel.swift; sourceTree = "<group>"; };
+		7C02D485298F417100F3D696 /* StationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationModel.swift; sourceTree = "<group>"; };
 		7C247CF726AD0E0400E3BE71 /* ChangeStationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeStationView.swift; sourceTree = "<group>"; };
 		7C34201826A7B5460037E4B0 /* TrainTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrainTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C34201B26A7B5460037E4B0 /* TrainTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainTrackerApp.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				7C02D481298EDFC700F3D696 /* TrainCodingKeys.swift */,
+				7C02D485298F417100F3D696 /* StationModel.swift */,
 				7C02D483298F0E6D00F3D696 /* ArrivalsModel.swift */,
 				7C34202626A7B54B0037E4B0 /* TrainTracker.xcdatamodeld */,
 			);
@@ -309,6 +312,7 @@
 				7CE1909426ABA00700E6E1DB /* ArrivalsView.swift in Sources */,
 				7CB308B726B116D2000854CD /* SettingsView.swift in Sources */,
 				7C777F8B26AA7FE90085A5AD /* ListRow.swift in Sources */,
+				7C02D486298F417100F3D696 /* StationModel.swift in Sources */,
 				7CEAFFD026B39ADF0041CE98 /* UserPreferencesViewModel.swift in Sources */,
 				7C34201C26A7B5460037E4B0 /* TrainTrackerApp.swift in Sources */,
 				7C02D482298EDFC700F3D696 /* TrainCodingKeys.swift in Sources */,
