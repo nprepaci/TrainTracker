@@ -42,7 +42,7 @@ Users can change the color scheme. Users can change the preferred color scheme v
 
 ## App Images
 
-[My Website - Projects](https://www.nicholasrepaci.com/projects)
+[My Website - Projects (See more images here!)](https://www.nicholasrepaci.com/projects)
 
 <p float="center">
   <img src="https://user-images.githubusercontent.com/23087566/216879123-7eda3fec-78b1-413a-82cf-bc3e24585732.gif" width="300" />
