@@ -1,5 +1,7 @@
 # TrainTracker
 
+![appstore](https://user-images.githubusercontent.com/23087566/216879175-0ce9e463-3dae-4751-b4ad-30ea1315bdbc.png)
+
 TrainTracker utilizes the [MTA's realtime subway feed](https://api.mta.info/#/landing) to display live subway information. Users can select their preferred subway line and view any of its associated stations. Clicking a station will display inbound trains (uptown and downtown) and arrival times. Users can personalize the app by selecting a custom color theme.
 
 ## Architecture
@@ -39,6 +41,11 @@ Users can change the color scheme. Users can change the preferred color scheme v
 ## App Images
 
 [My Website - Projects](https://www.nicholasrepaci.com/projects)
+
+<p float="center">
+  <img src="https://user-images.githubusercontent.com/23087566/216879123-7eda3fec-78b1-413a-82cf-bc3e24585732.gif" width="300" />
+  <img src="https://user-images.githubusercontent.com/23087566/216879151-69aaf698-54ae-4452-a8fa-5dfd854f9765" alt="animated" width="300" /> 
+</p>
 
 ## Help
 
